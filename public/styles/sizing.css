@@ -1,0 +1,42 @@
+/* PADDING */
+.p-t-100 {
+  padding-top: 100px;
+}
+
+.p-t-130 {
+  padding-top: 130px;
+}
+
+.p-t-180 {
+  padding-top: 180px;
+}
+
+.p-t-20 {
+  padding-top: 20px;
+}
+
+.p-t-15 {
+  padding-top: 15px;
+}
+
+.p-t-10 {
+  padding-top: 10px;
+}
+
+.p-t-30 {
+  padding-top: 30px;
+}
+
+.p-b-100 {
+  padding-bottom: 100px;
+}
+
+/* Margins */
+
+.m-r-45 {
+  margin-right: 45px;
+}
+
+.m-t-30 {
+  margin-top: 30px;
+}
