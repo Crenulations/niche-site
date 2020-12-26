@@ -1,5 +1,7 @@
 const express = require("express")
 const router = express.Router()
+const path = require("path")
+const Inventory_Item = require("../models/Inventory_Item")
 
 //================= PRIMARY ====================================
 //================= ROUTING ====================================
@@ -7,13 +9,29 @@ const router = express.Router()
 
 // ======= MIDDLEWARE ==================================
 
+router.get('/show-item/:id', (req, res) => {
+  res.sendFile(path.join(__dirname,"../../uploads/",req.params.id));
+})
+
 // Loading static files (CSS,JS)
-router.use(express.static('public'))
+router.use(express.static('../public'))
 
 // ====== FINAL ROUTING SECTION ===============================
 
+router.get('/item/:id', async (req, res) => { // INDEX PAGE
+  Inventory_Item.findById(req.params.id, function(err, item) {
+    res.render('pages/item_view.ejs', {
+      item: item,
+    })
+  })
+})
+
 router.get('/$', async (req, res) => { // INDEX PAGE
-  res.render('pages/index.ejs')
+  Inventory_Item.find({}, function(err, items) {
+    res.render('pages/index.ejs', {
+      show_items: items
+    })
+  })
 })
 
 // Make favico fuck off

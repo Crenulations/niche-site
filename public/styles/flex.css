@@ -1,0 +1,76 @@
+/* ==========================================================================
+   #FLEX
+   ========================================================================== */
+
+/* == ROWS ============== */
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row-space {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.row-center {
+  justify-content: center;
+}
+
+/* == COLUMNS ============== */
+
+@media only screen and (max-width: 400px) {
+  .show_items {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 400px) {
+  .show_items {
+    width: -webkit-calc((100% - 30px) / 4);
+    width: -moz-calc((100% - 30px) / 4);
+    width: calc((100% - 30px) / 4);
+  }
+}
+
+
+
+.col {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.grow-2 {
+  flex-grow: 2;
+}
+
+.col-1 {
+  width: 100%;
+  text-align: center;
+}
+
+.col-2 {
+  width: -webkit-calc((100% - 30px) / 2);
+  width: -moz-calc((100% - 30px) / 2);
+  width: calc((100% - 30px) / 2);
+}
+
+.col-3 {
+  width: -webkit-calc((100% - 30px) / 3);
+  width: -moz-calc((100% - 30px) / 3);
+  width: calc((100% - 30px) / 3);
+}
+
+.col-4 {
+  width: -webkit-calc((100% - 30px) / 4);
+  width: -moz-calc((100% - 30px) / 4);
+  width: calc((100% - 30px) / 4);
+}

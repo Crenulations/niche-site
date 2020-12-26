@@ -1,11 +1,12 @@
 const mongoose = require("mongoose")
 
 const schema = mongoose.Schema({
-	title: String,
-  start_date: Date,
-	end_date: Date,
-	color: String,
-	link: String,
-},{ collection : 'CalendarEvents' })
+	brand: String,
+  description: String,
+	price: Number,
+	discount_price: Number,
+	sold_out: Boolean,
+	image: String,
+},{ collection : 'Inventory' })
 
-module.exports = mongoose.model("CalendarEvent", schema)
+module.exports = mongoose.model("Inventory_Item", schema)

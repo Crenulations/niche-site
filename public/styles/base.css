@@ -6,7 +6,10 @@
   font-family: PassionOne;
   src: url(../res/fonts/PassionOne-Regular.ttf);
 }
-
+@font-face {
+  font-family: Inconsolata;
+  src: url(../res/fonts/Inconsolata-var.ttf);
+}
 /* ============= PHONE SCREEN ==============*/
 
 @media only screen and (max-width: 400px) {
@@ -18,12 +21,12 @@
 
 }
 
-/* ============ CORE =========================*/
+/* ========= BASE ===========*/
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-family: Castoro;
+  font-family: Inconsolata, monospace;
 }
 * {
   padding: 0;
@@ -35,10 +38,54 @@ html {
   box-sizing: inherit;
 }
 
-/* === BACKGROUND === */
+/* ============= PRIMARY =============== */
 
 .page-wrapper{
   min-height: 100vh;
+  padding-top: 20px;
+}
+
+.card{
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+
+/*==== SHOWROOM ====*/
+.showroom{
+  padding: 0 10vw;
+}
+
+.show_item{
+  text-align: center;
+}
+
+.show_item a{
+  text-decoration: none;
+  color: black;
+}
+/*==== ITEM VIEW ====*/
+.item_desc{
+  padding-top: 30px;
+  padding-left: 15px;
+}
+.item_desc p{
+  font-size: 16px;
+}
+.price-line{
+  display: flex;
+}
+@media only screen and (max-width: 400px) {
+  .item_image img{
+    width: 100vw;
+    height: 100vw;
+  }
+}
+@media only screen and (min-width: 400px) {
+  .item_image img{
+    width: 500px;
+    height: 500px;
+  }
 }
 
 /* =========== BUTTONS ==================*/
@@ -94,54 +141,49 @@ html {
   background: #3868cd;
 }
 
-
 /* ============== MINOR STYLES ==============*/
+
+.menu-link{
+  text-decoration: none;
+  line-height: 70px;
+  font-family: 'Inconsolata', monospace;
+  color: black;
+}
+.menu-link:hover{
+  color: red;
+}
+.menu-link p{
+  font-size: 15px;
+  font-weight: bold;
+}
+.price{
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+.discount-price{
+  color: red;
+  padding-left: 10px;
+}
 
 h1{
   font-size: 40px;
 }
 
 h2{
-  font-size: 30px;
-  margin: 0;
+  font-size: 13px;
+  font-weight: bold;
   text-align: left;
 }
 
-/* ==========================================================================
-   #GRID
-   ========================================================================== */
-.row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+p{
+  font-size: 13px;
+  text-align: left;
 }
 
-.row-space {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -moz-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+.border_black{
+  border: 2px solid black;
 }
 
-.col-1 {
-  width: 100%;
-  text-align: center;
-}
-
-.col-2 {
-  width: -webkit-calc((100% - 30px) / 2);
-  width: -moz-calc((100% - 30px) / 2);
-  width: calc((100% - 30px) / 2);
-}
-
-@media (max-width: 767px) {
-  .col-2 {
-    width: 100%;
-  }
+.bold{
+  font-weight: bolder;
 }
