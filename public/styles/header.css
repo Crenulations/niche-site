@@ -64,7 +64,7 @@
   display: block;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
   .header {
     padding: 0;
   }
@@ -73,6 +73,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-end;
+    min-width: 400px;
   }
 
   .menu-dropdown {
@@ -95,7 +96,7 @@
   }
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 400px) and not screen and (-webkit-min-device-pixel-ratio: 2) {
   .header {
     padding: 0 10vw;
   }
