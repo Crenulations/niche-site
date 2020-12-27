@@ -1,14 +1,18 @@
 <link href="/styles/header.css" rel="stylesheet">
 <div class="header">
   <div class="row row-space" style="padding-top:0;">
-      <a class="menu-link hover-red" href=""><p>about</p></a>
 
-      <a class="menu-link hover-red" href=""><p>new arrivals</p></a>
+      <a class="menu-dropdown hover-red" href="/">
+          <p>about</p>
+      </a>
+
+      <a class="menu-dropdown hover-red" href="/">
+          <p>new arrivals</p>
+      </a>
 
       <div class="menu-dropdown">
         <div class="drop-wrapper">
-          <div>
-          <a class="dropbtn hover-red" href=""><p>category</p></a>
+          <div class="dropbtn hover-red" href=""><p>category</p></div>
           <div class="dropdown-content">
             <a class="hover-red" href="#">All</a>
             <a class="hover-red" href="#">Tops</a>
@@ -17,7 +21,6 @@
             <a class="hover-red" href="#">Accessories</a>
             <a class="hover-red" href="#">Footwear</a>
             <a class="hover-red" href="#">Sale</a>
-          </div>
           </div>
         </div>
       </div>
@@ -28,19 +31,36 @@
 
       <div class="menu-dropdown">
         <div class="drop-wrapper">
-          <div>
-          <a class="dropbtn hover-red" href=""><p>brand</p></a>
+          <div class="dropbtn hover-red" href=""><p>brand</p></div>
           <div class="dropdown-content">
             <a class="hover-red" href="#">Kaptial</a>
             <a class="hover-red" href="#">Yeezy</a>
             <a class="hover-red" href="#">Darker Than Black</a>
           </div>
+        </div>
+      </div>
+
+      <div class="menu-dropdown">
+        <div class="drop-wrapper">
+          <div class="dropbtn hover-red" href=""><p>collections</p></div>
+          <div class="dropdown-content">
+            <a class="hover-red" href="#">Kaptial</a>
+            <a class="hover-red" href="#">Yeezy</a>
+            <a class="hover-red" href="#">Darker Than Black</a>
           </div>
         </div>
       </div>
 
-      <a class="menu-link hover-red" href=""><p>collections</p></a>
-
-      <a class="menu-link hover-red" href=""><p>cart(0)</p></a>
+      <a class="menu-dropdown hover-red" href="/">
+          <p>cart(0)</p>
+      </a>
   </div>
 </div>
+<script src="/libs/jquery/jquery.js"></script>
+<script>
+  $('.menu-dropdown').on('click', function(){
+    // REMOVE ALL SELECTED
+    $('.menu-dropdown').removeClass('selected');
+    $(this).addClass('selected');
+  });
+</script>

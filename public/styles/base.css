@@ -13,12 +13,23 @@
 /* ============= PHONE SCREEN ==============*/
 
 @media only screen and (max-width: 400px) {
-
+  .showroom{
+    padding: 0 0vw;
+  }
+  .showroom-img{
+    min-width: 80vw;
+    min-height: 80vw;
+  }
+  .showroom .row{
+    justify-content: space-around;
+  }
 }
 /* ============= NORMAL SCREEN =============== */
 
 @media only screen and (min-width: 400px) {
-
+  .showroom{
+    padding: 0 10vw;
+  }
 }
 
 /* ========= BASE ===========*/
@@ -64,7 +75,6 @@ html {
 
 /*==== SHOWROOM ====*/
 .showroom{
-  padding: 0 10vw;
   margin-top: 1vh;
 }
 
