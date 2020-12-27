@@ -18,9 +18,31 @@
           <img src="/show-item/<%- item.image %>" alt="ohlord">
         </div>
         <div class="col item_desc grow-2">
-          <p class="bold"><%- item.brand %></p>
-          <p class=""><%- item.description %></p>
-          <p class="">$<%- item.price %></p>
+          <div class="top-line">
+            <p class="bold"><%- item.brand %></p>
+            <p class=""><%- item.description %></p>
+          </div>
+          <div class="price-line p-t-15">
+            <%if (item.discount_price==null){ %>
+            <p class="price">$<%- item.price %> USD</p>
+            <% }else{ %>
+            <p class="price red-line">$<%- item.price %> USD</p>
+            <p class="discount-price"> $<%- item.discount_price %> USD</p>
+            <% } %>
+          </div>
+          <div class="details-section p-t-15">
+            <p> -Distressed tapered leg jeans </p>
+            <p> -Black and grey denim </p>
+            <p> -High rise </p>
+            <p> -Skinny fit </p>
+          </div>
+          <div class="size-section p-t-15">
+            <p> Select size </p>
+            <p style="font-size:16px;">s  m  l</p>
+          </div>
+          <div class="add-cart-section p-t-15">
+            <a href="/cart" type="submit">add to cart</a>
+          </div>
         </div>
       </div>
       <br><br><br><br>

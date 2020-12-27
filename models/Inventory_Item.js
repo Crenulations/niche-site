@@ -6,6 +6,7 @@ const schema = mongoose.Schema({
 	price: Number,
 	discount_price: Number,
 	sold_out: Boolean,
+	category: String,
 	image: String,
 },{ collection : 'Inventory' })
 

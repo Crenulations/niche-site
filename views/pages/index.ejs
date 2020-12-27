@@ -26,8 +26,12 @@
                     <h2><%- item.brand %></h2>
                     <p><%- item.description %></p>
                     <div class="price-line">
+                      <%if (item.discount_price==null){ %>
                       <p class="price">$<%- item.price %></p>
-                      <p class="discount-price"> $35.99</p>
+                      <% }else{ %>
+                      <p class="price red-line">$<%- item.price %></p>
+                      <p class="discount-price"> $<%- item.discount_price %></p>
+                      <% } %>
                     </div>
                   </div>
                 </div>

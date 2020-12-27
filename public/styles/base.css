@@ -27,6 +27,7 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: Inconsolata, monospace;
+  font-size: 13px;
 }
 * {
   padding: 0;
@@ -52,10 +53,19 @@ html {
   margin: 0 auto;
 }
 
+.nav-path{
+  width: 100%;
+  text-align: center;
+  padding-left: 20px;
+}
+.nav-path p{
+  font-size: 16px;
+}
 
 /*==== SHOWROOM ====*/
 .showroom{
   padding: 0 10vw;
+  margin-top: 1vh;
 }
 
 .show_item{
@@ -71,11 +81,25 @@ html {
   padding-top: 30px;
   padding-left: 15px;
 }
-.item_desc p{
+.item_desc{
   font-size: 16px;
 }
 .price-line{
   display: flex;
+}
+.details-section{
+  font-size: 12px;
+}
+.size-section{
+  font-size: 12px;
+}
+.add-cart-section{
+  text-align: left;
+  font-size: 18px;
+  text-decoration: underline;
+}
+.add-cart-section a{
+  color: black;
 }
 @media only screen and (max-width: 400px) {
   .item_image img{
@@ -93,20 +117,18 @@ html {
 /* =========== BUTTONS ==================*/
 
 .btn {
-  display: inline-block;
-  line-height: 50px;
-  padding: 0 50px;
+  line-height: 35px;
+  padding: 0 20px;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 18px;
   outline: none;
   border: none;
   color: #fff;
   text-decoration: none;
-  font-family: PassionOne;
 }
 
 .btn--radius {
@@ -145,20 +167,7 @@ html {
 
 /* ============== MINOR STYLES ==============*/
 
-.menu-link{
-  text-decoration: none;
-  line-height: 70px;
-  font-family: 'Inconsolata', monospace;
-  color: black;
-}
-.menu-link:hover{
-  color: red;
-}
-.menu-link p{
-  font-size: 15px;
-  font-weight: bold;
-}
-.price{
+.red-line{
   text-decoration: line-through;
   text-decoration-color: red;
 }
@@ -178,7 +187,6 @@ h2{
 }
 
 p{
-  font-size: 13px;
   text-align: left;
 }
 
