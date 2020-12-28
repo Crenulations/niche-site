@@ -17,8 +17,17 @@ router.use(express.static('../public'))
 
 // ====== FINAL ROUTING SECTION ===============================
 
+router.get('/new_item', async (req, res) => { // INDEX PAGE
+  res.render('pages/admin/new_item.ejs')
+})
+
 router.get('/*', async (req, res) => { // INDEX PAGE
-  res.render('pages/admin/admin.ejs')
+  Inventory_Item.find({}, function(err, items) {
+    res.render('pages/admin/admin.ejs', {
+      items: items,
+    })
+  })
+
 })
 
 // ===== POST =====

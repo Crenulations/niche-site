@@ -26,6 +26,10 @@
   justify-content: center;
 }
 
+.vertical {
+  flex-direction: column;
+}
+
 /* == COLUMNS ============== */
 
 @media only screen and (max-width: 400px) {

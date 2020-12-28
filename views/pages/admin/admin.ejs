@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <link href="styles/base.css" rel="stylesheet">
+  <link href="styles/admin.css" rel="stylesheet">
   <link href="styles/forms_style.css" rel="stylesheet">
   <link href="styles/sizing.css" rel="stylesheet">
 </head>
@@ -11,58 +11,42 @@
   <div class="page-wrapper">
     <div class="card">
 
-      <div class="row row-space">
+      <div class="vertical row row-space">
+        <h1 class="a"> ADMIN PAGE </h1>
         <div class="col-1">
-          <h1> ADD ITEM </h1>
+          <a class="button-1" href="/admin/new_item">NEW ITEM</a>
+        </div>
+        <div class="item-box">
+
+          <% items.forEach(function(item){ %>
+            <div class="item">
+              <div class="item-detail" style="width: 8%">
+                <img class="item-img" src="/show-item/<%- item.image %>" alt="ohlord">
+              </div>
+              <div class="item-detail" style="width: 15%">
+                <p><%- item.brand %></p>
+              </div>
+              <div class="item-detail" style="width: 25%">
+                <p><%- item.description %></p>
+              </div>
+              <div class="item-detail no-wrap" style="width: 8%">
+                <p>$<%- item.price %></p>
+              </div>
+              <div class="item-detail no-wrap" style="width: 30%">
+                <p></p>
+              </div>
+              <div class="item-detail no-wrap" style="width: 5%">
+                <a> edit </a>
+              </div>
+              <div class="item-detail no-wrap" style="width: 6%">
+                <a> delete </a>
+              </div>
+            </div>
+          <% }); %>
+
         </div>
       </div>
 
-      <form class="event_form p-t-20" enctype="multipart/form-data" action="/admin/new_item" method="post">
-      <div class="row row-space">
-        <div class="col-2 m-t-30">
-          <div class="input-group">
-            <label class="label">Brand</label>
-            <input class="input--style-4" type="text" name="brand">
-          </div>
-        </div>
-        <div class="col-2 m-t-30">
-          <div class="input-group">
-            <label class="label">Description</label>
-            <input class="input--style-4" type="text" name="description">
-          </div>
-        </div>
-      </div>
-      <div class="row row-space m-t-30">
-        <div class="col-2">
-          <div class="input-group">
-            <label class="label">Price</label>
-            <input class="input--style-4 bold center" type="text" name="price">
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="input-group">
-            <label class="label">Discount</label>
-            <input class="input--style-4 bold center" type="text" name="discount_price">
-          </div>
-        </div>
-      </div>
-      <div class="row row-space m-t-30">
-        <div class="col-1">
-          <div class="input-group">
-            <label class="label">Image</label>
-            <input class="input--style-4 bold center" type="file" name="image">
-          </div>
-        </div>
-      </div>
-      <div class="row row-space m-t-30">
-        <div class="col-1">
-          <div class="input-group">
-            <button class="btn btn--radius-2 btn--blue" type="submit">ENTER ITEM</button>
-          </div>
-        </div>
-      </div>
-      </form>
-    </div>
   </div>
 </body>
 

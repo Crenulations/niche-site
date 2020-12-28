@@ -98,7 +98,7 @@
   }
 }
 
-@media only screen and (min-width: 400px) and not screen and (-webkit-min-device-pixel-ratio: 2) {
+@media not screen and (-webkit-min-device-pixel-ratio: 2) {
   .header {
     padding: 0 10vw;
   }
