@@ -2,7 +2,7 @@
 <div class="header">
   <div class="row row-space" style="padding-top:0;">
 
-      <a class="menu-dropdown hover-red" href="/">
+      <a class="menu-dropdown hover-red" href="/about">
           <p>about</p>
       </a>
 
@@ -14,28 +14,30 @@
         <div class="drop-wrapper">
           <div class="dropbtn hover-red" href=""><p>category</p></div>
           <div class="dropdown-content">
-            <a class="hover-red" href="#">All</a>
-            <a class="hover-red" href="#">Tops</a>
-            <a class="hover-red" href="#">Bottoms</a>
-            <a class="hover-red" href="#">Outerwear</a>
-            <a class="hover-red" href="#">Accessories</a>
-            <a class="hover-red" href="#">Footwear</a>
-            <a class="hover-red" href="#">Sale</a>
+            <a class="hover-red" href="/">All</a>
+            <a class="hover-red" href="/category/tops">Tops</a>
+            <a class="hover-red" href="/category/bottoms">Bottoms</a>
+            <a class="hover-red" href="/category/outerwear">Outerwear</a>
+            <a class="hover-red" href="/category/accessories">Accessories</a>
+            <a class="hover-red" href="/category/footwear">Footwear</a>
+            <a class="hover-red" href="/sale">Sale</a>
           </div>
         </div>
       </div>
 
       <a class="logo" href="/">
-        <img src="/res/img/logo.png" alt="ALT-F4 LOGO" style="width:230px;">
+        <img src="/res/img/logo.png" alt="ALT-F4 LOGO">
       </a>
 
       <div class="menu-dropdown">
         <div class="drop-wrapper">
-          <div class="dropbtn hover-red" href=""><p>brand</p></div>
+          <div class="dropbtn hover-red" href=""><p>brands</p></div>
           <div class="dropdown-content">
-            <a class="hover-red" href="#">Kaptial</a>
-            <a class="hover-red" href="#">Yeezy</a>
-            <a class="hover-red" href="#">Darker Than Black</a>
+            <a class="hover-red" href="/">All</a>
+            <% brands.forEach(function(brand){ %>
+              <a class="hover-red" href="/brand/<%- brand %>"><%- brand %></a>
+            <% }); %>
+
           </div>
         </div>
       </div>
@@ -51,8 +53,8 @@
         </div>
       </div>
 
-      <a class="menu-dropdown hover-red" href="/">
-          <p>cart(0)</p>
+      <a class="menu-dropdown hover-red" href="/cart">
+          <p>cart(<%- cart_num %>)</p>
       </a>
   </div>
 </div>

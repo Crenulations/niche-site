@@ -4,6 +4,7 @@
 <head>
   <link href="styles/admin.css" rel="stylesheet">
   <link href="styles/forms_style.css" rel="stylesheet">
+  <link href="/styles/flex.css" rel="stylesheet">
   <link href="styles/sizing.css" rel="stylesheet">
 </head>
 
@@ -13,34 +14,31 @@
 
       <div class="vertical row row-space">
         <h1 class="a"> ADMIN PAGE </h1>
-        <div class="col-1">
+        <div class="control-box col-1">
           <a class="button-1" href="/admin/new_item">NEW ITEM</a>
         </div>
-        <div class="item-box">
-
+        <div class="item-box row row-space">
           <% items.forEach(function(item){ %>
-            <div class="item">
-              <div class="item-detail" style="width: 8%">
-                <img class="item-img" src="/show-item/<%- item.image %>" alt="ohlord">
-              </div>
-              <div class="item-detail" style="width: 15%">
-                <p><%- item.brand %></p>
-              </div>
-              <div class="item-detail" style="width: 25%">
-                <p><%- item.description %></p>
-              </div>
-              <div class="item-detail no-wrap" style="width: 8%">
-                <p>$<%- item.price %></p>
-              </div>
-              <div class="item-detail no-wrap" style="width: 30%">
-                <p></p>
-              </div>
-              <div class="item-detail no-wrap" style="width: 5%">
-                <a> edit </a>
-              </div>
-              <div class="item-detail no-wrap" style="width: 6%">
-                <a> delete </a>
-              </div>
+            <div class="admin-item">
+              <a href="/admin/item/<%- item._id %>">
+                <div class="row">
+                  <img class="admin-item-img" src="/show-item/<%- item.images[0] %>">
+                </div>
+                <div class="row">
+                  <div class="col-1 p-t-10">
+                    <p><%- item.brand %></p>
+                    <p><%- item.description %></p>
+                    <div class="split-line">
+                      <%if (item.discount_price==null){ %>
+                      <p class="price">$<%- item.price %></p>
+                      <% }else{ %>
+                      <p class="price red-line">$<%- item.price %></p>
+                      <p class="discount-price">DISCOUNT: $<%- item.discount_price %></p>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              </a>
             </div>
           <% }); %>
 

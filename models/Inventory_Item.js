@@ -7,7 +7,9 @@ const schema = mongoose.Schema({
 	discount_price: Number,
 	sold_out: Boolean,
 	category: String,
-	image: String,
+	minor_descriptions: [{type: String}],
+	images: [{type:String}],
+	category: String,
 },{ collection : 'Inventory' })
 
 module.exports = mongoose.model("Inventory_Item", schema)

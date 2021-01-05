@@ -1,5 +1,9 @@
 .logo{
   z-index: 2;
+  padding: 0 25px;
+}
+.logo img{
+  height: 70px;
 }
 
 .menu-link {
@@ -101,6 +105,7 @@
 @media not screen and (-webkit-min-device-pixel-ratio: 2) {
   .header {
     padding: 0 10vw;
+    margin-bottom: 5vh;
   }
 
   .header .row {

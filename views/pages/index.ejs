@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1">
   <link href="/styles/base.css" rel="stylesheet">
   <link href="/styles/flex.css" rel="stylesheet">
   <link href="/styles/sizing.css" rel="stylesheet">
@@ -19,7 +19,7 @@
             <div class="show_item m-t-30">
               <a href="/item/<%- item._id %>">
                 <div class="row">
-                  <img class="showroom-img" src="show-item/<%- item.image %>" alt="ohlord" style="height:230px;width:230px;">
+                  <img class="showroom-img" src="/show-item/<%- item.images[0] %>" alt="ohlord" style="height:230px;width:230px;">
                 </div>
                 <div class="row">
                   <div class="col-1 p-t-10">
@@ -40,6 +40,8 @@
         <% }); %>
       </div>
     </div>
+
+    <%- include('../partials/footer.ejs'); %>
 
   </div>
 </body>

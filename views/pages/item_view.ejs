@@ -6,6 +6,9 @@
   <link href="/styles/base.css" rel="stylesheet">
   <link href="/styles/flex.css" rel="stylesheet">
   <link href="/styles/sizing.css" rel="stylesheet">
+
+  <script src="/scripts/cookies.js"></script>
+  <script src="/libs/jquery/jquery.js"></script>
 </head>
 
 <body>
@@ -15,7 +18,7 @@
 
       <div class="row row-center p-t-30">
         <div class="col item_image">
-          <img src="/show-item/<%- item.image %>" alt="ohlord">
+          <img src="/show-item/<%- item.images[0] %>" alt="ohlord">
         </div>
         <div class="col item_desc grow-2">
           <div class="top-line">
@@ -31,23 +34,54 @@
             <% } %>
           </div>
           <div class="details-section p-t-15">
-            <p> -Distressed tapered leg jeans </p>
-            <p> -Black and grey denim </p>
-            <p> -High rise </p>
-            <p> -Skinny fit </p>
+            <% item.minor_descriptions.forEach(function(desc){ %>
+              <p> -<%- desc %> </p>
+            <% }) %>
           </div>
           <div class="size-section p-t-15">
             <p> Select size </p>
-            <p style="font-size:16px;">s  m  l</p>
+            <div class = "size-btn-container">
+              <button class="size-btn">S</button>
+              <button class="size-btn">M</button>
+              <button class="size-btn">L</button>
+            </div>
           </div>
           <div class="add-cart-section p-t-15">
-            <a href="/cart" type="submit">add to cart</a>
+            <button class="fake-href add_cart_button" onclick="addCart('<%- item._id %>')" type="submit">add to cart</button>
           </div>
+          <form id="submit_form" action="/api/add_cart" method="post" style="display:none;">
+            <input id="session_id" name="session_id" type="text">
+            <input id="item_id" name="item_id" type="text">
+            <input id="item_size" name="item_size" type="text">
+          </form>
         </div>
       </div>
-      <br><br><br><br>
+      <%- include('../partials/footer.ejs'); %>
+
+      <script>
+        // SELECTOR FOR SIZING BUTTONS
+        $('.size-btn').on('click', function(){
+          // REMOVE ALL SELECTED
+          $('.size-btn').removeClass('selected');
+          $(this).addClass('selected');
+        });
 
 
+        function addCart(id) {
+
+          var selected = document.getElementsByClassName('selected')[0]
+          if(selected == null){
+            alert("select a size")
+
+          }else{
+            document.getElementById('session_id').value=getCookie("user_id");
+            document.getElementById('item_id').value= id;
+            document.getElementById('item_size').value= selected.innerHTML;
+
+            document.getElementById('submit_form').submit();
+          }
+        }
+      </script>
   </div>
 </body>
 
