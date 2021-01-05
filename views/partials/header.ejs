@@ -1,26 +1,26 @@
 <link href="/styles/header.css" rel="stylesheet">
 <div class="header">
-  <div class="row row-space" style="padding-top:0;">
+  <div class="row row-space">
 
-      <a class="menu-dropdown hover-red" href="/about">
-          <p>about</p>
+      <a class="menu-item hover-red" href="/about">
+          <p class="menu-label">about</p>
       </a>
 
-      <a class="menu-dropdown hover-red" href="/">
-          <p>new arrivals</p>
+      <a class="menu-item hover-red" href="/">
+          <p class="menu-label">new arrivals</p>
       </a>
 
-      <div class="menu-dropdown">
+      <div class="menu-item">
         <div class="drop-wrapper">
-          <div class="dropbtn hover-red" href=""><p>category</p></div>
+          <div class="menu-label dropbtn hover-red" href=""><p>category</p></div>
           <div class="dropdown-content">
-            <a class="hover-red" href="/">All</a>
-            <a class="hover-red" href="/category/tops">Tops</a>
-            <a class="hover-red" href="/category/bottoms">Bottoms</a>
-            <a class="hover-red" href="/category/outerwear">Outerwear</a>
-            <a class="hover-red" href="/category/accessories">Accessories</a>
-            <a class="hover-red" href="/category/footwear">Footwear</a>
-            <a class="hover-red" href="/sale">Sale</a>
+            <a class="menu-label hover-red" href="/">All</a>
+            <a class="menu-label hover-red" href="/category/tops">Tops</a>
+            <a class="menu-label hover-red" href="/category/bottoms">Bottoms</a>
+            <a class="menu-label hover-red" href="/category/outerwear">Outerwear</a>
+            <a class="menu-label hover-red" href="/category/accessories">Accessories</a>
+            <a class="menu-label hover-red" href="/category/footwear">Footwear</a>
+            <a class="menu-label hover-red" href="/sale">Sale</a>
           </div>
         </div>
       </div>
@@ -29,40 +29,40 @@
         <img src="/res/img/logo.png" alt="ALT-F4 LOGO">
       </a>
 
-      <div class="menu-dropdown">
+      <div class="menu-item">
         <div class="drop-wrapper">
-          <div class="dropbtn hover-red" href=""><p>brands</p></div>
+          <div class="menu-label dropbtn hover-red" href=""><p>brands</p></div>
           <div class="dropdown-content">
-            <a class="hover-red" href="/">All</a>
+            <a class="menu-label hover-red" href="/">All</a>
             <% brands.forEach(function(brand){ %>
-              <a class="hover-red" href="/brand/<%- brand %>"><%- brand %></a>
+              <a class="menu-label hover-red" href="/brand/<%- brand %>"><%- brand %></a>
             <% }); %>
 
           </div>
         </div>
       </div>
 
-      <div class="menu-dropdown">
+      <div class="menu-item">
         <div class="drop-wrapper">
-          <div class="dropbtn hover-red" href=""><p>collections</p></div>
+          <div class="menu-label dropbtn hover-red" href=""><p>collections</p></div>
           <div class="dropdown-content">
-            <a class="hover-red" href="#">Kaptial</a>
-            <a class="hover-red" href="#">Yeezy</a>
-            <a class="hover-red" href="#">Darker Than Black</a>
+            <a class="menu-label hover-red" href="#">Kaptial</a>
+            <a class="menu-label hover-red" href="#">Yeezy</a>
+            <a class="menu-label hover-red" href="#">Darker Than Black</a>
           </div>
         </div>
       </div>
 
-      <a class="menu-dropdown hover-red" href="/cart">
-          <p>cart(<%- cart_num %>)</p>
+      <a class="menu-item hover-red" href="/cart">
+          <p class="menu-label">cart(<%- cart_num %>)</p>
       </a>
   </div>
 </div>
 <script src="/libs/jquery/jquery.js"></script>
 <script>
-  $('.menu-dropdown').on('click', function(){
+  $('.menu-item').on('click', function(){
     // REMOVE ALL SELECTED
-    $('.menu-dropdown').removeClass('selected');
+    $('.menu-item').removeClass('selected');
     $(this).addClass('selected');
   });
 </script>

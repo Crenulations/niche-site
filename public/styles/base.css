@@ -103,6 +103,7 @@ html {
 .item_desc{
   padding-top: 30px;
   padding-left: 15px;
+  padding-bottom: 10vh;
 }
 .item_desc{
   font-size: 16px;
@@ -213,6 +214,7 @@ html {
   .item_image img{
     width: 100vw;
   }
+  .item
 }
 @media not screen and (-webkit-min-device-pixel-ratio: 2) {
   .item_image img{

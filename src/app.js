@@ -38,11 +38,8 @@ mongoose // MongoDB database connection which contains REST API
 				very inneficient.
 
 			 --- ADMIN ---
-		- Full item view description.
-		- Multiple image inputs for inv_items
+		- Admin password
 		- Select sizing options/availability in item creation.
-		- Edit/remove items.
-
 
 
 https://docs.mongodb.com/manual/tutorial/model-data-for-keyword-search/
