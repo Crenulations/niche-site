@@ -1,0 +1,32 @@
+{
+  "name": "rag-site",
+  "version": "1.0.0",
+  "description": "Rag Thrift Store Site",
+  "main": "src/app.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.8",
+    "multer": "^1.4.2",
+    "node": "^15.4.0",
+    "path": "^0.12.7",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Crenulations/rag-site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Crenulations/rag-site/issues"
+  },
+  "homepage": "https://github.com/Crenulations/rag-site#readme"
+}

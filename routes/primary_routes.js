@@ -17,7 +17,7 @@ router.get('/show-item/:id', (req, res) => { // Send Image
 })
 
 // Loading static files (CSS,JS)
-router.use(express.static('../public'))
+router.use(express.static('rag-site/public'))
 
 router.use('/*', (req, res, next) => {
   Inventory_Item.distinct("brand", function(err, brands) {

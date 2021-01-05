@@ -12,7 +12,7 @@ mongoose // MongoDB database connection which contains REST API
 		const app = express()
 
     // Set ejs view-engine
-    app.set('views', '../views')
+    app.set('views', 'rag-site/views')
     app.set('view engine', 'ejs')
 
 		app.use(cookieParser());

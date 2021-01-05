@@ -14,7 +14,7 @@ router.use(express.urlencoded()); // to support URL-encoded bodies
 // ======= MIDDLEWARE ==================================
 
 // Loading static files (CSS,JS)
-router.use(express.static('../public'))
+router.use(express.static('rag-site/public'))
 
 // ====== FINAL ROUTING SECTION ===============================
 
@@ -54,7 +54,7 @@ router.get('/*', async (req, res) => { // INDEX PAGE
 // ===== POST =====
 
 var storage = multer.diskStorage({
-        destination: "../../uploads",
+        destination: "uploads",
         filename: function ( req, file, cb ) {
           let uid = uuidv1()+".jpg";
           req.img_url = uid;
@@ -74,8 +74,17 @@ router.post('/new_image/:id', upload.single('image'), (req, res) => {
 })
 
 router.post('/update_item/:id', (req, res) => {
-  Inventory_Item.findById(req.params.id, function(err, item) {
 
+  if(req.body.delete == "clicked"){
+
+    // VERY MUCH NEEDS A SYSTEM TO GO THROUGH AND WIPE THIS ID FROM EVERY
+    // USER SESSION'S CART, THIS CAUSES A CRASH ON USER SIDE
+    Inventory_Item.findByIdAndDelete(req.params.id, function (err) {
+      if(err) console.log(err);
+      console.log("Successful deletion");
+    });
+
+  }else{ Inventory_Item.findById(req.params.id, function(err, item) {
     item.brand = req.body.brand
     item.description = req.body.description
     item.price = req.body.price
@@ -94,52 +103,8 @@ router.post('/update_item/:id', (req, res) => {
     item.minor_descriptions = minor_descs,
 
     item.save()
-  })
-  res.redirect('back')
-})
-
-router.post('/new_item', (req, res) => {
-
-
-/*router.use('/new_item', function (req, res, next) {
-  var id = req.body.brand+req.body.description
-  req.image_id = id;
-  next()
-})
-var storage = multer.diskStorage({
-        destination: "../../uploads",
-        filename: function ( req, file, cb ) {
-            cb( null, req.body.brand.replace(/ /g,"_")+"__"+req.body.description.replace(/ /g,"_")+".jpg");
-        }
-    }
-);
-var upload = multer( { storage: storage } );
-
-router.post('/new_item',upload.single("image"), (req, res) => {
-  console.log(req.body)
-
-  // Load the minor Descriptions
-  var minor_descs = []
-  while(true){
-    desc = req.body["minor_description_"+minor_descs.length]
-    if (desc == "")
-      break;
-    minor_descs.push(desc)
-  }
-
-  const item = new Inventory_Item({
-    brand: req.body.brand,
-    description: req.body.description,
-    price: req.body.price,
-    discount_price: req.body.discount_price,
-    category: req.body.category,
-    minor_descriptions: minor_descs,
-    sold_out: true,
-    image: req.body.brand.replace(/ /g,"_")+"__"+req.body.description.replace(/ /g,"_")+".jpg",
-  })
-  item.save()
-
-  res.redirect('back');*/
+  })}
+  res.redirect('/admin')
 })
 
 module.exports = router
