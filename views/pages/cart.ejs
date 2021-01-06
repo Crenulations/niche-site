@@ -4,6 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="/styles/base.css" rel="stylesheet">
+  <link href="/styles/cart.css" rel="stylesheet">
   <link href="/styles/flex.css" rel="stylesheet">
   <link href="/styles/sizing.css" rel="stylesheet">
 
@@ -21,30 +22,33 @@
     <div class="cart-section">
       <div id="cart-box">
         <% cart[0].forEach(function(item, i){ %>
-          <div class="cart-item row row-space">
+          <div class="cart-item-wrapper">
             <img class="cart-img" src="/show-item/<%- item.images[0] %>" alt="ohlord">
-            <div class="cart-item-block info">
-              <p class="bold"><%- item.brand %></p>
-              <p><%- item.description %></p>
-            </div>
-            <div class="cart-item-block size">
+            <div class="cart-item row row-space">
+              <div class="cart-item-block info">
+                <p class="bold"><%- item.brand %></p>
+                <p><%- item.description %></p>
+              </div>
+              <div class="cart-item-block size">
 
                 <p class="bold">size</p>
 
-              <p><%- cart[1][i] %></p>
-            </div>
-            <div class="cart-item-block price">
-              <p class="bold">price</p>
-              <% if(item.discount_price!=null){ %>
-                <p class="red-line">$<%- item.price %></p>
-                <p class="discount-price">$<%- item.discount_price %></p>
-              <% }else{ %>
-                <p>$<%- item.price %></p>
-              <% } %>
-              <br><br><br><br>
-              <form action="/api/remove_cart/<%- i %>" method="post">
-                <button class="fake-href remove_cart" type="submit">remove</button>
-              </form>
+                <p><%- cart[1][i] %></p>
+              </div>
+              <div class="cart-item-block price">
+                <div class="price-wrap">
+                  <p class="label">price</p>
+                  <% if(item.discount_price!=null){ %>
+                    <p class="red-line">$<%- item.price %></p>
+                    <p class="discount-price">$<%- item.discount_price %></p>
+                  <% }else{ %>
+                    <p>$<%- item.price %></p>
+                  <% } %>
+                </div>
+                <form class="remove-cart-form" action="/api/remove_cart/<%- i %>" method="post">
+                  <button class="fake-href remove_cart" type="submit">remove</button>
+                </form>
+              </div>
             </div>
           </div>
           <hr>

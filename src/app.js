@@ -36,6 +36,7 @@ mongoose // MongoDB database connection which contains REST API
 		- Change alt tags on images
 		- The middleware which loads unique brands fires on every request not just page requests,
 				very inneficient.
+		- email input in footer has border-radius in safari
 
 			 --- ADMIN ---
 		- Admin password

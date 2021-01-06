@@ -11,8 +11,6 @@
   margin: 0 auto;
 }
 .menu-item {
-  border: 2px dashed black;
-
   width: auto;
   display: flex;
   align-items: center;
