@@ -3,6 +3,7 @@ const multer = require("multer")
 const router = express.Router()
 const { v1: uuidv1 } = require('uuid');
 const Inventory_Item = require("../models/Inventory_Item")
+const UserSession = require("../models/UserSession")
 
 router.use(express.json()); // to support JSON-encoded bodies
 router.use(express.urlencoded()); // to support URL-encoded bodies
@@ -15,6 +16,26 @@ router.use(express.urlencoded()); // to support URL-encoded bodies
 
 // Loading static files (CSS,JS)
 router.use(express.static('rag-site/public'))
+
+
+// Require authentification for all connections to /admin except /admin/login
+var unless = function(path, middleware) {
+    return function(req, res, next) {
+        if (path === req.path) {
+            return next();
+        } else {
+            return middleware(req, res, next);
+        }
+    };
+};
+router.use(unless("/login", async (req, res, next) => {
+  var auth = req.cookies.auth;
+  if(auth == null){
+    res.render('pages/admin/login.ejs')
+  }else{
+    next();
+  }
+}))
 
 // ====== FINAL ROUTING SECTION ===============================
 
@@ -41,7 +62,15 @@ router.get('/item/:id', async (req, res) => { // INDEX PAGE
   })
 })
 
-router.get('/*', async (req, res) => { // INDEX PAGE
+router.get('/sessions', async (req, res) => { // INDEX PAGE
+  UserSession.find({}, function(err, sessions) {
+    res.render('pages/admin/sessions.ejs',{
+      sessions: sessions,
+    })
+  })
+})
+
+router.get('/$', async (req, res) => { // INDEX PAGE
   Inventory_Item.find({}, function(err, items) {
     res.render('pages/admin/admin.ejs', {
       items: items,
@@ -53,6 +82,22 @@ router.get('/*', async (req, res) => { // INDEX PAGE
 
 // ===== POST =====
 
+// ADMIN LOGIN
+router.post('/login', (req, res) => {
+  console.log("ADMIN PASSWORD ATTEMPT")
+  if(req.body.password=="booty"){
+    console.log("   - Succesful")
+
+    var hash = "hash"
+
+    res.cookie('auth', hash, { maxAge: 31556926000 , httpOnly: true })
+    res.redirect('back')
+  }else{
+    res.redirect('back')
+  }
+})
+
+// IMAGE UPLOADING
 var storage = multer.diskStorage({
         destination: "uploads",
         filename: function ( req, file, cb ) {
@@ -105,6 +150,12 @@ router.post('/update_item/:id', (req, res) => {
     item.save()
   })}
   res.redirect('/admin')
+})
+
+router.post('/delete_session/:id', (req, res) => {
+  UserSession.findByIdAndDelete(req.params.id, function (err) {
+    res.redirect('back');
+  })
 })
 
 module.exports = router

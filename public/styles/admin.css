@@ -87,6 +87,54 @@ html {
 .editing-img{
   width: 50%;
 }
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+}
+
+/*============== Session View =============*/
+.session-card{
+  border: 2px dashed black;
+  text-align: center;
+  width: 900px;
+  padding: 30px;
+}
+.session-box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.session{
+  display: flex;
+  background-color: #DDD;
+  padding: 5px 5px;
+  margin: 5px 5px;
+}
+.sesh-info{
+  text-align: left;
+}
+.sesh-info.ip{
+  width: 30%;
+}
+.sesh-info.cart{
+  width: 30%;
+}
+.sesh-info.email{
+  width: 30%;
+}
+.sesh-info.del{
+  width: 10%;
+  text-decoration: underline;
+}
+@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+  .session-card{
+    width: 100%
+  }
+  .card{
+    width: 100%
+  }
+}
 /* ============= MINOR STYLES ==============*/
 
 h1{
@@ -111,4 +159,10 @@ h1{
 .red-line{
   text-decoration: line-through;
   text-decoration-color: red;
+}
+
+.login-inpt{
+  border: 1px solid black;
+  width: 100%;
+  margin: 10px auto;
 }

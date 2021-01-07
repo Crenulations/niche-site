@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="styles/admin.css" rel="stylesheet">
+  <link href="styles/forms_style.css" rel="stylesheet">
+  <link href="/styles/flex.css" rel="stylesheet">
+  <link href="styles/sizing.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="session-card">
+
+      <div class="vertical row row-space">
+        <h1 class="a"> USER SESSIONS </h1>
+        <div class="control-box col-1">
+          <a class="button-1" href="/date">BY DATE</a>
+          <a class="button-1" href="/admin/sessions">USER SESSIONS</a>
+        </div>
+        <div class="session-box">
+          <% sessions.forEach(function(session){ %>
+            <div class="session">
+              <p class="sesh-info ip">ip:[<%- session.ip %>]</p>
+              <div class="sesh-info cart">
+                <a>cart(<%- session.cart.length %>)</a>
+                <div class="full-cart">
+                  <% session.cart.forEach(function(item){ %>
+                    <p> <%- item._id %> </p>
+                  <% }); %>
+                </div>
+              </div>
+              <p class="sesh-info email">email:[<%- session.email %>]</p>
+              <form class="sesh-info del" action="/admin/delete_session/<%- session._id %>" method="post">
+                <button class="" type="submit">delete</button>
+              </form>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+
+  </div>
+</body>
+
+
+</html>

@@ -41,7 +41,7 @@ router.post('/remove_cart/:cart_num', (req, res) => {
     console.log(session.cart)
     session.cart.splice(req.params.cart_num,1)
     session.save();
-    res.redirect('/')
+    res.redirect('back')
   })
 })
 

@@ -25,6 +25,7 @@ router.use('/*', (req, res, next) => {
       // If the user has no session
       if(session==null){
         session = new UserSession()
+        session.ip = req.ip;
         session.save()
         var expires = new Date();
         expires.setFullYear(expires.getFullYear() + 1);
@@ -33,10 +34,10 @@ router.use('/*', (req, res, next) => {
         res.redirect(req.originalUrl);
       }
 
-        res.locals = {
-          cart_num: session.cart.length,
-          brands: brands,
-        }
+      res.locals = {
+        cart_num: session.cart.length,
+        brands: brands,
+      }
 
       next();
     })
@@ -94,14 +95,23 @@ router.get('/cart', (req, res) => { // CART
 
     async function loadCart(){
       for(i=0; i<session.cart.length; i++){
+
         var entry = session.cart[i]
         let item = await Inventory_Item.findById(entry.item)
-        console.log("   - Loading Item "+i+" ~ "+item.price)
-        if(item.discount_price != null){
-          total += item.discount_price
-        }else{ total += item.price }
-        cart[0].push(item)
-        cart[1].push(entry.item_size)
+
+        //This checks if item has been deleted but it should also check if is sold out.
+        if(item == null){
+          console.log("   - Depricated Item "+i)
+          session.cart.splice(i,1)
+          session.save();
+        }else{
+          console.log("   - Loading Item "+i+" ~ "+item.price)
+          if(item.discount_price != null){
+            total += item.discount_price
+          }else{ total += item.price }
+          cart[0].push(item)
+          cart[1].push(entry.item_size)
+        }
       }
       console.log(cart[1])
       res.render('pages/cart.ejs',{
