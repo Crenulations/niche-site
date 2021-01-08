@@ -25,11 +25,12 @@ var unless = function(path, middleware) {
 };
 router.use(unless("/login", async (req, res, next) => {
   var auth = req.cookies.auth;
-  if(auth == null){
+  next();
+  /*if(auth == null){
     res.render('pages/admin/login.ejs')
   }else{
     next();
-  }
+  }*/
 }))
 
 // ====== FINAL ROUTING SECTION ===============================
