@@ -8,11 +8,6 @@ const UserSession = require("../models/UserSession")
 router.use(express.json()); // to support JSON-encoded bodies
 router.use(express.urlencoded()); // to support URL-encoded bodies
 
-//================= ADMIN ====================================
-//================= ROUTING ====================================
-//     This section is for ADMIN GET request of the REST API
-
-// ======= MIDDLEWARE ==================================
 
 // Loading static files (CSS,JS)
 router.use(express.static('rag-site/public'))
@@ -38,8 +33,14 @@ router.use(unless("/login", async (req, res, next) => {
 }))
 
 // ====== FINAL ROUTING SECTION ===============================
-
-router.get('/new_item', async (req, res) => { // INDEX PAGE
+router.get('/inventory/$', async (req, res) => { // INDEX PAGE
+  Inventory_Item.find({}, function(err, items) {
+    res.render('pages/admin/inventory/inventory.ejs', {
+      items: items,
+    })
+  })
+})
+router.get('/inventory/new_item', async (req, res) => { // INDEX PAGE
   const item = new Inventory_Item({
     brand: "",
     description: "",
@@ -51,20 +52,20 @@ router.get('/new_item', async (req, res) => { // INDEX PAGE
     images: [],
   })
   await item.save();
-  res.redirect("/admin/item/"+item._id)
+  res.redirect("/admin/inventory/edit_item/"+item._id)
 })
 
-router.get('/item/:id', async (req, res) => { // INDEX PAGE
+router.get('/inventory/edit_item/:id', async (req, res) => { // INDEX PAGE
   Inventory_Item.findById(req.params.id, function(err, item) {
-    res.render('pages/admin/item.ejs',{
+    res.render('pages/admin/inventory/edit_item.ejs',{
       item: item,
     })
   })
 })
 
-router.get('/sessions', async (req, res) => { // INDEX PAGE
+router.get('/sessions/main', async (req, res) => { // INDEX PAGE
   UserSession.find({}, function(err, sessions) {
-    res.render('pages/admin/sessions.ejs',{
+    res.render('pages/admin/sessions/sessions_main.ejs',{
       sessions: sessions,
     })
   })
@@ -72,11 +73,10 @@ router.get('/sessions', async (req, res) => { // INDEX PAGE
 
 router.get('/$', async (req, res) => { // INDEX PAGE
   Inventory_Item.find({}, function(err, items) {
-    res.render('pages/admin/admin.ejs', {
+    res.render('pages/admin/admin_home.ejs', {
       items: items,
     })
   })
-
 })
 
 
@@ -115,7 +115,7 @@ router.post('/new_image/:id', upload.single('image'), (req, res) => {
     item.images.push(""+req.img_url)
     item.save();
   })
-  res.redirect('back')
+  res.redirect('/admin/inventory/')
 })
 
 router.post('/update_item/:id', (req, res) => {
@@ -149,7 +149,7 @@ router.post('/update_item/:id', (req, res) => {
 
     item.save()
   })}
-  res.redirect('/admin')
+  res.redirect('/admin/inventory/')
 })
 
 router.post('/delete_session/:id', (req, res) => {

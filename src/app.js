@@ -35,9 +35,11 @@ mongoose // MongoDB database connection which contains REST API
 		- Admin password
 		- Payment Processing
 		- 404 pages for front and admin panel
+		- Bug with multiple sessions for the same IP
 
 			--- MAIN SITE ----
 		- Item view does not show multiple images
+		- Page Titles
 
 			--- CART ----
 		- Order cart item by date added

@@ -23,9 +23,9 @@ router.use('/*', (req, res, next) => {
   Inventory_Item.distinct("brand", function(err, brands) {
     UserSession.findById(req.cookies.user_id, async (err, session) => {
       // If the user has no session
-      if(session==null){
+      if(!session){
         session = new UserSession()
-        session.ip = req.ip;
+        session.ip = req.connection.remoteAddress;
         session.save()
         var expires = new Date();
         expires.setFullYear(expires.getFullYear() + 1);
