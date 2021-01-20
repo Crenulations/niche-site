@@ -20,8 +20,8 @@ router.get('/show-item/:id', (req, res) => { // Send Image
 router.use(express.static('rag-site/public'))
 
 router.use('/*', (req, res, next) => {
-  Inventory_Item.distinct("brand", function(err, brands) {
-    UserSession.findById(req.cookies.user_id, async (err, session) => {
+  Inventory_Item.distinct("brand", function(err, brands) { // Load brands
+    UserSession.findById(req.cookies.user_id, async (err, session) => { // Find User session
       // If the user has no session
       if(!session){
         session = new UserSession()
@@ -37,6 +37,7 @@ router.use('/*', (req, res, next) => {
       res.locals = {
         cart_num: session.cart.length,
         brands: brands,
+        animation: false,
       }
 
       next();
@@ -128,7 +129,8 @@ router.get('/cart', (req, res) => { // CART
 router.get('/$', async (req, res) => { // INDEX PAGE
   Inventory_Item.find({}, function(err, items) {
     res.render('pages/index.ejs', {
-      show_items: items
+      show_items: items,
+      animation: true,
     })
   })
 })

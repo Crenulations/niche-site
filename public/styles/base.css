@@ -10,6 +10,15 @@
   font-family: Inconsolata;
   src: url(../res/fonts/Inconsolata-var.ttf);
 }
+@font-face {
+  font-family: Ubuntu;
+  src: url(../res/fonts/Ubuntu-Regular.ttf);
+}
+@font-face {
+  font-family: Ubuntu;
+  src: url(../res/fonts/Ubuntu-Bold.ttf);
+  font-weight: bold;
+}
 /* ============= PHONE SCREEN ==============*/
 
 @media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){

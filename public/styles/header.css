@@ -1,5 +1,5 @@
 .logo {
-  width: 20%;
+  width: 18%;
 }
 .logo img{
   width: 100%;
@@ -18,7 +18,7 @@
 }
 .menu-label{
   color: Black;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   text-decoration: none;
 }
@@ -50,9 +50,9 @@
 
 @media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
   .logo {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
-    margin-bottom: 1vh;
+    margin-bottom: 0.5vh;
     order: -1;
   }
   .logo img{
@@ -62,7 +62,7 @@
     padding: 0;
     width: auto;
     height: auto;
-    margin-bottom: 10vh;
+    margin-bottom: 1vh;
   }
 
   .header .row {
@@ -70,7 +70,7 @@
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: baseline;
-    min-height: 200px;
+    min-height: 0px;
     height: auto;
   }
 
@@ -83,6 +83,9 @@
   }
   .menu-item p{
     width: auto;
+  }
+  .menu-label{
+    font-size: 18px;
   }
   .dropdown-content{
     position: relative;
@@ -97,5 +100,38 @@
 @media not screen and (-webkit-min-device-pixel-ratio: 2) {
   .menu-item:hover .dropdown-content {
     display: block;
+  }
+}
+
+
+
+/* ANIMATION */
+.animationBox{
+  background: white;
+  position: fixed;
+  height: 100vh;
+  padding: 0px 150px;
+  top: 0;
+  left: 0;
+}
+.animationBox svg{
+}
+.animationBox.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
+}
+@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+  .animationBox{
+    background: white;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    padding: 18vh 0px;
+    top: 0;
+  }
+  .animationBox svg{
+    width: 100%;
+    transform: scale(2.2);
   }
 }

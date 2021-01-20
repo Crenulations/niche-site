@@ -1,4 +1,9 @@
 <link href="/styles/header.css" rel="stylesheet">
+<% if(animation==true){ %>
+  <div class="animationBox">
+    <%- include('../pages/util/logo_animation.ejs'); %>
+  </div>
+<% } %>
 <div class="header">
   <div class="row row-space">
 
@@ -65,4 +70,15 @@
     $('.menu-item').removeClass('selected');
     $(this).addClass('selected');
   });
+
+  <% if(animation==true){ %>
+    console.log("yeeters")
+    var animation = $('.animationBox')
+    animation.ready(setTimeout(function(){
+      animation.addClass("hidden")
+      setTimeout(function(){
+        animation.remove()
+      },1000)
+    },2000))
+  <% } %>
 </script>

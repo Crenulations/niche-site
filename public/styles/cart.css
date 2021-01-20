@@ -85,6 +85,12 @@
 
 /* PHONE SCREEN */
 @media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+  .pre-cart{
+    margin-top: 2vh;
+  }
+  .post-cart{
+    margin-bottom: 0vh;
+  }
   .cart-section{
     margin: 0 5%;
     padding: 15px 10px;
