@@ -30,7 +30,7 @@ mongoose // MongoDB database connection which contains REST API
 /* ========== TO-DO ==============
 
 			--- MOST IMPORTANT ---
-		- MAJOR GLITCH: desktop safari desplays as mobile
+		- MAJOR GLITCH: desktop safari fucks up animation
 		- Secure the database
 				- Needs authentification as well
 		- CRASH LOG!!!

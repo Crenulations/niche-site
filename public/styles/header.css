@@ -49,7 +49,7 @@
 }
 
 @media only screen and (max-width: 570px){
-  .logo {
+   .logo {
     width: 60%;
     margin: 0 auto;
     margin-bottom: 0.5vh;
@@ -130,6 +130,7 @@
   }
   .animationBox svg{
     width: 100%;
+    -webkit-transform: scale(2.2);
     transform: scale(2.2);
   }
   .menu-item:hover .dropdown-content {
