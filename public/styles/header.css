@@ -48,7 +48,7 @@
   display: block;
 }
 
-@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+@media only screen and (max-width: 570px){
   .logo {
     width: 60%;
     margin: 0 auto;
