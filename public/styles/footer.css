@@ -50,7 +50,7 @@
   color: red;
 }
 /* MOBILE */
-@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+@media only screen and (max-width: 570px){
   .footer .row{
     flex-direction: column;
   }

@@ -1,7 +1,7 @@
 /* ======= CART =========== */
 .pre-cart{
   margin: 20px 25%;
-  margin-top: 0;
+  margin-top: 20px;
   font-size: 20px;
 }
 .pre-cart p{
@@ -41,6 +41,7 @@
 }
 .cart-item{
   width: 70%;
+  padding-left: 5px;
 }
 
 .cart-item-block{
@@ -52,7 +53,7 @@
 }
 
 .cart-item-block.info{
-  width: 35%;
+  width: 40%;
 }
 .cart-item-block.size{
   width: 20%;
@@ -84,7 +85,7 @@
 }
 
 /* PHONE SCREEN */
-@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+@media only screen and (max-width: 570px){
   .pre-cart{
     margin-top: 2vh;
   }

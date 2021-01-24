@@ -21,7 +21,7 @@
 }
 /* ============= PHONE SCREEN ==============*/
 
-@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+@media only screen and (max-width: 570px){
   .showroom{
     padding: 0 0vw;
   }
@@ -36,12 +36,11 @@
 }
 /* ============= NORMAL SCREEN =============== */
 
-@media not screen and (-webkit-min-device-pixel-ratio: 2) {
-  .showroom{
+/*  .showroom{
     padding: 0 10vw;
     min-height: 50vh;
   }
-}
+}*/
 
 /* ========= BASE ===========*/
 html {
@@ -147,15 +146,13 @@ html {
 }
 
 
-@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+@media only screen and (max-width: 570px){
   .item_image img{
     width: 100vw;
   }
 }
-@media not screen and (-webkit-min-device-pixel-ratio: 2) {
-  .item_image img{
+.item_image img{
     width: 70vh;
-  }
 }
 
 /* =========== BUTTONS ==================*/

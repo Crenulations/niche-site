@@ -1,8 +1,8 @@
 const express = require("express")
 const mongoose = require("mongoose")
-const api_routes = require("../routes/api_routes")
-const primary_routes = require("../routes/primary_routes")
-const admin_routes = require("../routes/admin_routes")
+const api_routes = require("./routes/api_routes.js")
+const primary_routes = require("./routes/primary_routes.js")
+const admin_routes = require("./routes/admin_routes.js")
 const cookieParser = require("cookie-parser")
 
 mongoose // MongoDB database connection which contains REST API
@@ -30,14 +30,16 @@ mongoose // MongoDB database connection which contains REST API
 /* ========== TO-DO ==============
 
 			--- MOST IMPORTANT ---
+		- MAJOR GLITCH: desktop safari desplays as mobile
 		- Secure the database
+				- Needs authentification as well
 		- CRASH LOG!!!
 		- Admin password
 		- Payment Processing
-		- 404 pages for front and admin panel
 		- Bug with multiple sessions for the same IP
 
 			--- MAIN SITE ----
+		- Expand category system to have multiple categories
 		- Item view does not show multiple images
 		- Page Titles
 
@@ -47,9 +49,12 @@ mongoose // MongoDB database connection which contains REST API
 		- Add a function which tells you an item has been sold out of your cart
 
        --- MISC ---
+		- Breadcrumb
 		- Change alt tags on images
 		- The middleware which loads unique brands fires on every request not just page requests,
 				very inneficient.
+		- use __dirname rather than manually pointing to directory in routing
+
 
 			 --- ADMIN ---
 		- Admin password

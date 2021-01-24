@@ -96,12 +96,10 @@
   }
 }
 
-/* HOVER FUNCTIONALITY FOR DESKTOP */
-@media not screen and (-webkit-min-device-pixel-ratio: 2) {
-  .menu-item:hover .dropdown-content {
-    display: block;
-  }
+.menu-item:hover .dropdown-content {
+  display: block;
 }
+
 
 
 
@@ -121,7 +119,7 @@
   opacity: 0;
   transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
 }
-@media only screen and (max-width: 400px), screen and (-webkit-min-device-pixel-ratio: 2){
+@media only screen and (max-width: 570px){
   .animationBox{
     background: white;
     position: fixed;
@@ -133,5 +131,8 @@
   .animationBox svg{
     width: 100%;
     transform: scale(2.2);
+  }
+  .menu-item:hover .dropdown-content {
+    display: inherit;
   }
 }
