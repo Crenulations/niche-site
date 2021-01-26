@@ -53,24 +53,6 @@ router.get('/$', async (req, res) => {
 
 // ================= POST ======================
 
-// ADMIN LOGIN   WIP
-router.post('/login', (req, res) => {
-  console.log("ADMIN PASSWORD ATTEMPT")
-  if (req.body.password == "booty") {
-    console.log("   - Succesful")
-
-    var hash = "hash"
-
-    res.cookie('auth', hash, {
-      maxAge: 31556926000,
-      httpOnly: true
-    })
-    res.redirect('back')
-  } else {
-    res.redirect('back')
-  }
-})
-
 router.post('/new_image/:id', multerUpload.single('image'), async (req, res) => {
   await AdminServices.addImageToItem(req.params.id, req.img_url)
   res.redirect('back')

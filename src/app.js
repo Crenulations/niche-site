@@ -33,14 +33,10 @@ mongoose // MongoDB database connection which contains REST API
 /* ========== TO-DO ==============
 
 			--- MOST IMPORTANT ---
-		- MAJOR GLITCH: desktop safari fucks up animation
-		- Secure the database
-				- Needs authentification as well
-		- CRASH LOG!!!
-		- Admin password
-		- Payment Processing needs a decimal placement checker
-		- Success and cancel checkout Page
-			- connecting to the success page should clear the cart
+		- MAJOR GLITCH: desktop safari messes up animation
+		- Database auth file
+		- Admin auth
+		- connecting to the success page should clear the cart
 
 			--- MAIN SITE ----
 		- Expand category system to have multiple categories
@@ -55,18 +51,11 @@ mongoose // MongoDB database connection which contains REST API
        --- MISC ---
 		- Breadcrumb
 		- Change alt tags on images
-		- The middleware which loads unique brands fires on every request not just page requests,
-				very inneficient.
-		- use __dirname rather than manually pointing to directory in routing
-
 
 			 --- ADMIN ---
-		- Admin password
 		- Select sizing options/availability in item creation.
 		- Delete Image from item function
 			- Images should be deleted from the uploads folder also
-		- Admin mobile css is dogshit
-
 
 https://docs.mongodb.com/manual/tutorial/model-data-for-keyword-search/
 
