@@ -8,6 +8,9 @@ const UserServices = require("../services/UserServices")
 exports.validateUserSession = async (req, res, next) => {
   var session
 
+  console.log("COOKIE:  "+req.cookies.user_id)
+  console.log("SESSION:  "+req.cookies.user_id)
+
   // If no cookie
   if(!req.cookies.user_id){
     // Check for dead sessions
@@ -24,6 +27,7 @@ exports.validateUserSession = async (req, res, next) => {
     // If no session by that ID
     if (session == null) {
       session = await newUserSession(res, req.connection.remoteAddress)
+
     // Remove new flag on second connection when cookie is confirmed to have been received
     } else if (session.new == true) {
       session.new = false
