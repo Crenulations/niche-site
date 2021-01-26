@@ -44,8 +44,8 @@
                                                 <th>IP</th>
                                                 <th>Email</th>
                                                 <th>Cart Size</th>
-                                                <th>Last Connection</th>
-                                                <th>First Connection</th>
+                                                <th>NEW</th>
+                                                <th>DEAD</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -55,8 +55,8 @@
                                                 <td><%- session.ip %></td>
                                                 <td><%- session.email %></td>
                                                 <td><%- session.cart.length %></td>
-                                                <td>N/A</td>
-                                                <td>N/A</td>
+                                                <td><%- session.new %></td>
+                                                <td><%- session.dead %></td>
                                                 <td>
                                                   <form class="sesh-info del" action="/admin/delete_session/<%- session._id %>" method="post">
                                                     <button class="btn btn-danger" type="submit">delete</button>

@@ -16,11 +16,11 @@
 
     <%- include('../partials/header.ejs'); %>
 
-      <div class="row row-center p-t-30">
-        <div class="col item_image">
+      <div class="item_view_row p-t-30">
+        <div class="item_view_col item_image">
           <img src="/show-item/<%- item.images[0] %>" alt="ohlord">
         </div>
-        <div class="col item_desc grow-2">
+        <div class="item_view_col item_desc">
           <div class="top-line">
             <p class="bold"><%- item.brand %></p>
             <p class=""><%- item.description %></p>
@@ -74,9 +74,8 @@
             alert("select a size")
 
           }else{
-            document.getElementById('session_id').value=getCookie("user_id");
-            document.getElementById('item_id').value= id;
-            document.getElementById('item_size').value= selected.innerHTML;
+            document.getElementById('item_id').value = id;
+            document.getElementById('item_size').value = selected.innerHTML;
 
             document.getElementById('submit_form').submit();
           }

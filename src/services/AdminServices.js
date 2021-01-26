@@ -8,8 +8,8 @@ exports.getAllUserSessions = async () => {
   return await UserSession.find().exec()
 }
 
-exports.deleteUserSession = async () => {
-  await UserSession.findByIdAndDelete(req.params.id).exec()
+exports.deleteUserSession = async (id) => {
+  await UserSession.findByIdAndDelete(id).exec()
 }
 
 

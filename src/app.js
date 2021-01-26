@@ -4,9 +4,10 @@ const api_routes = require("./routes/api_routes.js")
 const primary_routes = require("./routes/primary_routes.js")
 const admin_routes = require("./routes/admin_routes.js")
 const cookieParser = require("cookie-parser")
+const bodyParser = require('body-parser')
 
 mongoose // MongoDB database connection which contains REST API
-	.connect("mongodb://localhost:27017/PrimaryData", { useNewUrlParser: true })
+	.connect("mongodb://localhost:27017/PrimaryData", { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
 
 		const app = express()
@@ -16,6 +17,8 @@ mongoose // MongoDB database connection which contains REST API
     app.set('view engine', 'ejs')
 
 		app.use(cookieParser());
+		app.use(bodyParser.json())
+		app.use(bodyParser.urlencoded({ extended: true }))
 
     // Implement routes
 		app.use("/admin", admin_routes)
@@ -35,8 +38,9 @@ mongoose // MongoDB database connection which contains REST API
 				- Needs authentification as well
 		- CRASH LOG!!!
 		- Admin password
-		- Payment Processing
-		- Bug with multiple sessions for the same IP
+		- Payment Processing needs a decimal placement checker
+		- Success and cancel checkout Page
+			- connecting to the success page should clear the cart
 
 			--- MAIN SITE ----
 		- Expand category system to have multiple categories

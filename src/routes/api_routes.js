@@ -1,59 +1,33 @@
 const express = require("express")
 const router = express.Router()
 const mongoose = require("mongoose")
-const UserSession = require("../models/UserSession")
 
+const SiteServices = require("../services/SiteServices")
+const UserServices = require("../services/UserServices")
 
-router.use(express.json()); // to support JSON-encoded bodies
-router.use(express.urlencoded()); // to support URL-encoded bodies
+// Import Middleware
+const {validateUserSession: validateUserSession} = require("../middlewares/SessionMiddleware")
 
-// This router is used for POST requests
-router.post('/add_cart', (req, res) => {
-  UserSession.findById(req.cookies.user_id, function(err, session) {
-      if (session==null) { // IF NEW USER ID GENERATE NEW ONE
+router.use(validateUserSession)
 
-        console.log("NEW USER SESSION GENERATED")
-        const user = new UserSession({
-          cart: [{
-            item: req.body.item_id,
-            item_size: req.body.item_size
-          }]
-        })
-        user.save();
-
-        // RENDER PAGE WHICH CREATES COOKIE STORING SESSION ID
-        res.render('pages/util/new_user_session.ejs', {
-          user_id: user._id,
-        })
-
-      } else {
-        session.cart.push({item: req.body.item_id,item_size: req.body.item_size})
-        session.save();
-        res.redirect('/cart');
-    }
-  })
-
+router.post('/create-checkout-session', async (req, res) => {
+  const session = await UserServices.generateStripeCheckout(req.session._id)
+  res.json({ id: session.id })
 })
 
-router.post('/remove_cart/:cart_num', (req, res) => {
-  UserSession.findById(req.cookies.user_id, function(err, session) {
-    console.log("REMOVING CART ITEM")
-    console.log(session.cart)
-    session.cart.splice(req.params.cart_num,1)
-    session.save();
-    res.redirect('back')
-  })
+router.post('/add_cart', async (req, res) => {
+  await UserServices.addItemToCart(req.session._id, req.body.item_id, req.body.item_size)
+  res.redirect('/cart');
 })
 
-router.post('/add_email', (req, res) => {
-  UserSession.findById(req.cookies.user_id, function(err, session) {
-    session.email = req.body.email;
-    session.save();
-    res.redirect('back')
-  })
+router.post('/remove_cart/:cart_num', async (req, res) => {
+  await UserServices.removeItemFromCart(req.cookies.user_id, req.params.cart_num)
+  res.redirect('back')
 })
 
-
-
+router.post('/add_email', async (req, res) => {
+  UserServices.addEmail(req.session._id, req.body.email)
+  res.redirect('back')
+})
 
 module.exports = router

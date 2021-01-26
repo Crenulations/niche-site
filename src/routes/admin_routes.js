@@ -6,11 +6,11 @@ const SiteServices = require("../services/SiteServices")
 const UserServices = require("../services/UserServices")
 const AdminServices = require("../services/AdminServices")
 
-// Import Admin Middleware
+// Import Middleware
 const {multerUpload: multerUpload} = require("../middlewares/AdminMiddleware")
 
-router.use(express.json()); // to support JSON-encoded bodies        these are for multer
-router.use(express.urlencoded()); // to support URL-encoded bodies         img uploads
+router.use(express.json()); // to support JSON-encoded bodies                           these are for multer
+router.use(express.urlencoded({ extended: true })); // to support URL-encoded bodies         img uploads
 
 // Loading static files (CSS,JS)
 router.use(express.static('rag-site/public'))

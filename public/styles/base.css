@@ -108,6 +108,23 @@ html {
   color: black;
 }
 /*==== ITEM VIEW ====*/
+.item_view_row{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.item_view_col{
+  flex-grow: 0;
+}
+
 .item_desc{
   padding-top: 30px;
   padding-left: 15px;
