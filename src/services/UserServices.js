@@ -20,6 +20,7 @@ exports.findUserById = async (id) => {
   try{
     session =  await UserSession.findById(mongoose.Types.ObjectId(id)).exec()
   }catch(err){
+    console.log("FIND USER ERROR $%^$%$")
     session = undefined
   }
   return session

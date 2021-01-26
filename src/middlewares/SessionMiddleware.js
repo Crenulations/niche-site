@@ -6,14 +6,16 @@ const UserServices = require("../services/UserServices")
                      ^^^ Express fingerprinting implementation (TBD) ^^^     */
 
 exports.validateUserSession = async (req, res, next) => {
-  var session
+  var session = await UserServices.findUserById(req.cookies.user_id)
 
-  console.log("VALIDATING USER CONNECT: "+req.url)
+  console.log("VALIDATING USER CONNECT: "+req.url+"  ================")
   console.log("COOKIE:  "+req.cookies.user_id)
 
+
+
   // If no cookie
-  if(req.cookies.user_id == undefined){
-    console.log("EMPTY COOKIE ROUTE")
+  if(!session){
+    console.log("NO SESSION")
     // Check for dead sessions
     session = await UserServices.checkDeadSessions(req.connection.remoteAddress)
     // If there is no dead sessions create new session
@@ -23,15 +25,9 @@ exports.validateUserSession = async (req, res, next) => {
 
   // If cookie
   }else{
-    console.log("COOKIE FOUND")
-    session = await UserServices.findUserById(req.cookies.user_id)
-    console.log(session)
-    // If no session by that ID
-    if (session == null) {
-      session = await newUserSession(res, req.connection.remoteAddress)
-
+    console.log("SESSION FOUND")
     // Remove new flag on second connection when cookie is confirmed to have been received
-    } else if (session.new == true) {
+    if (session.new == true) {
       session.new = false
       session.save()
     }
