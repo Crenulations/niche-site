@@ -16,7 +16,13 @@ exports.newUserSession = async (ip) => {
 }
 
 exports.findUserById = async (id) => {
-  return await UserSession.findById(mongoose.Types.ObjectId(id)).exec()
+  var session
+  try{
+    session =  await UserSession.findById(mongoose.Types.ObjectId(id)).exec()
+  }catch(err){
+    session = undefined
+  }
+  return session
 }
 
 exports.getUserCart = async (id) => { // Returns both cart and total together as object

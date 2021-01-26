@@ -8,10 +8,11 @@ const UserServices = require("../services/UserServices")
 exports.validateUserSession = async (req, res, next) => {
   var session
 
+  console.log("VALIDATING USER CONNECT: "+req.url)
   console.log("COOKIE:  "+req.cookies.user_id)
 
   // If no cookie
-  if(req.cookies.user_id === undefined){
+  if(req.cookies.user_id == undefined){
     console.log("EMPTY COOKIE ROUTE")
     // Check for dead sessions
     session = await UserServices.checkDeadSessions(req.connection.remoteAddress)
@@ -22,8 +23,9 @@ exports.validateUserSession = async (req, res, next) => {
 
   // If cookie
   }else{
+    console.log("COOKIE FOUND")
     session = await UserServices.findUserById(req.cookies.user_id)
-
+    console.log(session)
     // If no session by that ID
     if (session == null) {
       session = await newUserSession(res, req.connection.remoteAddress)
