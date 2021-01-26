@@ -24,6 +24,8 @@
 @media only screen and (max-width: 570px){
   .showroom{
     padding: 0 0vw;
+    width: auto;
+    margin: auto;
   }
   .showroom-img{
     object-fit: cover;
@@ -90,6 +92,8 @@ html {
 
 /*==== SHOWROOM ====*/
 .showroom{
+  width: 80%;
+  margin: auto;
   margin-top: 1vh;
 }
 .showroom .row{
