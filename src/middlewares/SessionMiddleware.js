@@ -6,6 +6,10 @@ const UserServices = require("../services/UserServices")
                      ^^^ Express fingerprinting implementation (TBD) ^^^     */
 
 exports.validateUserSession = async (req, res, next) => {
+  if(!req.cookies.user_id){
+    session = await newUserSession(res, req.connection.remoteAddress)
+  }
+
   var session = await UserServices.findUserById(req.cookies.user_id)
 
   // If there is no user session by that id
@@ -16,11 +20,7 @@ exports.validateUserSession = async (req, res, next) => {
     session = await UserServices.checkDeadSessions(ip)
     // If there is no dead sessions create new session
     if(session == null){
-      session = await UserServices.newUserSession(ip)
-      res.cookie('user_id', session._id, {
-        maxAge: 31556926000,
-        httpOnly: true,
-      })
+      session = await newUserSession(res, req.connection.remoteAddress)
     }
 
   // Remove new flag on second connection when cookie is confirmed to have been received
@@ -41,4 +41,13 @@ exports.validateUserSession = async (req, res, next) => {
   }
 
   next()   // Middleware does 1 DB pull and 2 checks per normal connection
+}
+
+async function newUserSession(res, ip){
+  session = await UserServices.newUserSession(ip)
+  res.cookie('user_id', session._id, {
+    maxAge: 31556926000,
+    httpOnly: true,
+  })
+  return session
 }
