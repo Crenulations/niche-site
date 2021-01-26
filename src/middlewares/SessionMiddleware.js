@@ -6,11 +6,12 @@ const UserServices = require("../services/UserServices")
                      ^^^ Express fingerprinting implementation (TBD) ^^^     */
 
 exports.validateUserSession = async (req, res, next) => {
+  var session
   if(!req.cookies.user_id){
     session = await newUserSession(res, req.connection.remoteAddress)
+  }else{
+    session = await UserServices.findUserById(req.cookies.user_id)
   }
-
-  var session = await UserServices.findUserById(req.cookies.user_id)
 
   // If there is no user session by that id
   if (session == null) {
