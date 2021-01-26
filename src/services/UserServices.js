@@ -1,4 +1,5 @@
 const stripe = require('stripe')('sk_test_51I716xDScnxQKL28PKQkaf9uIYAWhdry4CoSrJpMbhdVZhT18iyyiDDDOOeJtKvO3BAAGagjhrCbyW262u05L1fR00tEQPnxua');
+const mongoose = require("mongoose")
 
 const Inventory_Item = require("../models/Inventory_Item")
 const UserSession = require("../models/UserSession")
@@ -15,7 +16,7 @@ exports.newUserSession = async (ip) => {
 }
 
 exports.findUserById = async (id) => {
-  return await UserSession.findById(id).exec()
+  return await UserSession.findById(mongoose.Types.ObjectId(id)).exec()
 }
 
 exports.getUserCart = async (id) => { // Returns both cart and total together as object
@@ -62,7 +63,7 @@ exports.removeItemFromCart = async (id, cart_num) =>{
   session.save()
 }
 
-const DOMAIN = "http://localhost"
+const DOMAIN = "http://niche-thrift.com"
 exports.generateStripeCheckout = async (id) => {
   const userSession = await UserSession.findById(id).exec()
   const cart_pack = await exports.getUserCart(id)
