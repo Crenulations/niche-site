@@ -14,7 +14,7 @@ exports.getInventoryByID = async (id) => {
 }
 
 exports.getInventoryBySale = async () => {
-  return await Inventory_Item.find({sale: { $ne : }}).exec()
+  return await Inventory_Item.find({sale: { $ne: ""}}).exec()
 }
 
 exports.getInventoryByBrand = async (brand) => {
