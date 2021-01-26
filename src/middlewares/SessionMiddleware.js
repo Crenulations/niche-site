@@ -11,7 +11,8 @@ exports.validateUserSession = async (req, res, next) => {
   console.log("COOKIE:  "+req.cookies.user_id)
 
   // If no cookie
-  if(!req.cookies.user_id || req.cookies.user_id == undefined){
+  if(req.cookies.user_id === undefined){
+    console.log("EMPTY COOKIE ROUTE")
     // Check for dead sessions
     session = await UserServices.checkDeadSessions(req.connection.remoteAddress)
     // If there is no dead sessions create new session
