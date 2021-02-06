@@ -91,10 +91,11 @@
                 </div>
                   <div class="form-group">
                   <button class="btn btn--radius-2 btn--blue" type="submit">SAVE</button>
-                  <button class="btn btn-danger" name="delete" value="clicked" type="submit">DELETE</button>
                 </div>
                 </form>
-
+                <form class="delete-form" action="/admin/delete_item/<%- item._id %>" method="post">
+                  <button type="submit" class="btn btn-outline-light">Delete</a>
+                </form>
               </div>
             </div>
           </div>

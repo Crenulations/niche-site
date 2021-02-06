@@ -54,7 +54,9 @@
                       </div>
                       <div class="product-btn">
                         <a href="/admin/inventory/edit_item/<%- item._id %>" class="btn btn-primary">Edit</a>
-                        <a href="#" class="btn btn-outline-light">Delete</a>
+                        <form class="delete-form" action="/admin/delete_item/<%- item._id %>" method="post">
+                          <button type="submit" class="btn btn-outline-light">Delete</a>
+                        </form>
                       </div>
                     </div>
                   </div>
