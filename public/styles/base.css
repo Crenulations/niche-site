@@ -2,57 +2,24 @@
   font-family: Castoro;
   src: url(../res/fonts/Castoro-Regular.ttf);
 }
+
 @font-face {
   font-family: PassionOne;
   src: url(../res/fonts/PassionOne-Regular.ttf);
 }
+
 @font-face {
   font-family: Inconsolata;
   src: url(../res/fonts/Inconsolata-var.ttf);
 }
-@font-face {
-  font-family: Ubuntu;
-  src: url(../res/fonts/Ubuntu-Regular.ttf);
-}
-@font-face {
-  font-family: Ubuntu;
-  src: url(../res/fonts/Ubuntu-Bold.ttf);
-  font-weight: bold;
-}
-/* ============= PHONE SCREEN ==============*/
 
-@media only screen and (max-width: 570px){
-  .showroom{
-    padding: 0 0vw;
-    width: auto;
-    margin: auto;
-  }
-  .showroom-img{
-    object-fit: cover;
-    min-width: 80vw;
-    min-height: 80vw;
-  }
-  .showroom .row{
-    justify-content: space-around;
-  }
-}
-/* ============= NORMAL SCREEN =============== */
-
-/*  .showroom{
-    padding: 0 10vw;
-    min-height: 50vh;
-  }
-}*/
-
-/* ========= BASE ===========*/
+/* =============== BASE ================*/
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: Inconsolata, monospace;
   font-size: 13px;
-
-/*  text-shadow: -0.2em -0.2em red,  0.2em 0.2em cyan;  This creates the 3D effect, pretty easy, eh? */
 }
 * {
   padding: 0;
@@ -65,169 +32,75 @@ html {
 }
 
 /* ============= PRIMARY =============== */
-
-.page-wrapper{
+.page-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: flex-start;
   min-height: 100vh;
-  padding-top: 20px;
-  padding-left: 3vw;
-  padding-right: 3vw;
+  padding: 3vh;
 }
 
-.card{
-  max-width: 700px;
-  margin: 0 auto;
-}
+.main-block {
+  flex-basis: 85%;
 
-.nav-path{
-  width: 100%;
-  text-align: center;
-  padding-left: 20px;
-}
-.nav-path p{
-  font-size: 16px;
-}
-
-/*==== SHOWROOM ====*/
-.showroom{
-  width: 80%;
-  margin: auto;
-  margin-top: 1vh;
-}
-.showroom .row{
-  justify-content: space-around;
-}
-.show_item{
-  text-align: center;
-}
-.showroom-img{
-  object-fit: cover;
-  object-position: 0% 0%;
-}
-
-.show_item a{
-  text-decoration: none;
-  color: black;
-}
-/*==== ITEM VIEW ====*/
-.item_view_row{
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-
-  justify-content: center;
-}
-
-.item_view_col{
-  flex-grow: 0;
-}
-
-.item_desc{
-  padding-top: 30px;
-  padding-left: 15px;
-  padding-bottom: 10vh;
-}
-.item_desc{
-  font-size: 16px;
-}
-.price-line{
-  display: flex;
-}
-.details-section{
-  font-size: 12px;
-}
-.size-section{
-  font-size: 12px;
-  padding-bottom: 20px;
-}
-.size-btn-container{
-  float: left;
-}
-.size-btn{
-  background: none;
-  border: none;
-}
-.size-btn.selected{
-  border-bottom: 2px solid black;
-}
-.add-cart-section{
-  text-align: left;
-  font-size: 18px;
-  text-decoration: underline;
-}
-.add-cart-section a{
-  color: black;
-}
-
-
-@media only screen and (max-width: 570px){
-  .item_image img{
-    width: 100vw;
-  }
-}
-.item_image img{
-    width: 70vh;
-}
-
-/* =========== BUTTONS ==================*/
-
-.fake-href{
-  background: white;
-  font-family: Inconsolata, monospace;
-  border: none;
-  text-decoration: underline;
-  cursor: pointer;
-}
-.add_cart_button{
-  font-size: 16px;
-}
-.remove_cart{
-  float: right;
-  font-size: 14px;
+  min-height: 80vh;
 }
 
 /* ============== MINOR STYLES ==============*/
 
-.red-line{
-  text-decoration: line-through;
-  text-decoration-color: red;
-}
-.discount-price{
-  color: red;
-  padding-left: 10px;
-}
-
-h1{
+h1 {
   font-size: 20px;
   font-weight: normal;
 }
 
-h1.a{
+h1.a {
   font-size: 40px;
   text-align: center;
 }
 
-h2{
+h2 {
   font-size: 13px;
   font-weight: bold;
   text-align: left;
 }
 
-p{
+p {
   text-align: left;
 }
 
-.border_black{
+.border_black {
   border: 2px solid black;
 }
 
-.bold{
+.bold {
   font-weight: bolder;
+}
+
+.red-line {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
+.discount-price {
+  color: red;
+  padding-left: 10px;
+}
+
+.hover-red:hover {
+  color:red;
+}
+
+/* ====== DEBUG COLORS ======
+
+.nav {
+  background-color: #fdd;
+}
+
+.main-block {
+  background-color: #dfd;
+}
+
+.footer{
+  background-color: #ddf;
 }

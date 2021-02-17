@@ -1,11 +1,15 @@
 .footer{
-  margin: 7% 10%;
-  padding: 0 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+  padding: 0 3vh;
+
+  flex-basis: 100%;
+
   font-size: 15px;
 }
-.footer .row{
-  justify-content: space-between;
-}
+
 .footer-col{
 }
 .col-title{
@@ -28,6 +32,7 @@
 .col-link:hover {
   color: red;
 }
+
 .email-input{
   border: none;
   -webkit-border-radius: 0;
@@ -46,9 +51,7 @@
   font-size: 15px;
   font-family: Inconsolata, monospace;
 }
-.email-button:hover{
-  color: red;
-}
+
 /* MOBILE */
 @media only screen and (max-width: 570px){
   .footer .row{

@@ -13,7 +13,7 @@ router.use(express.json()); // to support JSON-encoded bodies                   
 router.use(express.urlencoded({ extended: true })); // to support URL-encoded bodies         img uploads
 
 // Loading static files (CSS,JS)
-router.use(express.static('rag-site/public'))
+router.use(express.static('niche-site/public'))
 
 // INVENTORY FULL VIEW
 router.get('/inventory/$', async (req, res) => {
@@ -55,6 +55,12 @@ router.get('/$', async (req, res) => {
 
 router.post('/new_image/:id', multerUpload.single('image'), async (req, res) => {
   await AdminServices.addImageToItem(req.params.id, req.img_url)
+  res.redirect('back')
+})
+
+router.post('/delete_image/:id/:img_num', async (req, res) => {
+  console.log("DELETING IMAGE: "+req.url)
+  await AdminServices.deleteImage(req.params.id, req.params.img_num)
   res.redirect('back')
 })
 

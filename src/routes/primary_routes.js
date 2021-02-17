@@ -7,14 +7,11 @@ const favicon = require('serve-favicon')
 const SiteServices = require("../services/SiteServices")
 const UserServices = require("../services/UserServices")
 
-// Import Middleware
-const {validateUserSession: validateUserSession} = require("../middlewares/SessionMiddleware")
-
-
-//================= PRIMARY ====================================
-//================= ROUTING ====================================
 
 // ======= MIDDLEWARE =======
+
+// Import Middleware
+const {validateUserSession: validateUserSession} = require("../middlewares/SessionMiddleware")
 
 // Load images from external upload folder
 router.get('/show-item/:id', (req, res) => {
@@ -23,10 +20,10 @@ router.get('/show-item/:id', (req, res) => {
 })
 
 // Make favico fuck off
-router.use(favicon('rag-site/public/res/favicon.ico'));
+router.use(favicon('niche-site/public/res/favicon.ico'));
 
 // Loading static files (CSS,JS)
-router.use(express.static('rag-site/public'))
+router.use(express.static('niche-site/public'))
 
 router.use(validateUserSession)
 
@@ -83,8 +80,12 @@ router.get('/$', async (req, res) => { // INDEX PAGE
   var inventory = await SiteServices.getFullInventory()
   res.render('pages/index.ejs', {
     show_items: inventory,
-    animation: true,
+    animation: false,
   })
+})
+
+router.get('/test', async (req, res) => { // INDEX PAGE
+  res.render('pages/test.ejs')
 })
 
 router.get('/*', (req, res) => { // ALL OTHER ROUTES

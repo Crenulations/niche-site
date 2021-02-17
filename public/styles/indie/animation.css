@@ -1,0 +1,35 @@
+
+/* ANIMATION */
+.animationBox{
+  background: white;
+  position: fixed;
+  height: 100vh;
+  padding: 0px 150px;
+  top: 0;
+  left: 0;
+}
+.animationBox svg{
+}
+.animationBox.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
+}
+@media only screen and (max-width: 570px){
+  .animationBox{
+    background: white;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    padding: 18vh 0px;
+    top: 0;
+  }
+  .animationBox svg{
+    width: 100%;
+    -webkit-transform: scale(2.2);
+    transform: scale(2.2);
+  }
+  .menu-item:hover .dropdown-content {
+    display: inherit;
+  }
+}

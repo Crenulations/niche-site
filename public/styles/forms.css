@@ -73,6 +73,26 @@ input {
   color: #666;
 }
 
+/* =================== Buttons ======================== */
+
+.fake-href {
+  background: white;
+  font-family: Inconsolata, monospace;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.add_cart_button {
+  font-size: 16px;
+}
+
+.remove_cart {
+  float: right;
+  font-size: 14px;
+}
+
+
 /* ==========================================================================
    #DATE PICKER
    ========================================================================== */

@@ -1,0 +1,26 @@
+
+/*==== SHOWROOM ====*/
+
+.main-block .row {
+  justify-content: space-around;
+}
+
+.show_item {
+  text-align: center;
+}
+
+.showroom-img {
+  height: 20em;
+  width: 20em;
+  object-fit: cover;
+  object-position: 0% 0%;
+}
+
+.show_item a {
+  text-decoration: none;
+  color: black;
+}
+
+.price-line {
+  display: flex;
+}

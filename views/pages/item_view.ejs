@@ -2,21 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/styles/base.css" rel="stylesheet">
-  <link href="/styles/flex.css" rel="stylesheet">
-  <link href="/styles/sizing.css" rel="stylesheet">
+  <%- include('../partials/head.ejs'); %>
+  <link href="/styles/indie/itemview.css" rel="stylesheet">
 
-  <script src="/scripts/cookies.js"></script>
   <script src="/libs/jquery/jquery.js"></script>
 </head>
 
 <body>
   <div class="page-wrapper">
 
-    <%- include('../partials/header.ejs'); %>
+    <%- include('../partials/nav.ejs'); %>
 
-      <div class="item_view_row p-t-30">
+    <div class="main-block">
+      <div class="item_view_row">
         <div class="item_view_col item_image">
           <img src="/show-item/<%- item.images[0] %>" alt="ohlord">
         </div>
@@ -56,6 +54,7 @@
           </form>
         </div>
       </div>
+    </div>
       <%- include('../partials/footer.ejs'); %>
 
       <script>

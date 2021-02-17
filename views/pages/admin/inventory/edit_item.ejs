@@ -37,9 +37,16 @@
             <div class="card">
               <h5 class="card-header">Images</h5>
               <div class="card-body">
-                <% item.images.forEach(function(image){ %>
-                  <img class="img-fluid" src="/show-item/<%- image %>">
-                <% }) %>
+                <% for(var i = 0; i < item.images.length; i++){ %>
+                  <div style="position:relative;">
+                    <form action="/admin/delete_image/<%- item._id %>/<%- i %>" method="post">
+                      <button type="submit" style="right:0px;position: absolute;">
+                        <span>&times;</span>
+                      </button>
+                      <img class="img-fluid" src="/show-item/<%- item.images[i] %>">
+                    </form>
+                  </div>
+                <% } %>
                 <form id="image-form" enctype="multipart/form-data" action="/admin/new_image/<%- item._id %>" method="post">
                   <input id="image_inpt" class="form-control" type="file" name="image" style="padding: 0 5px;">
                 </form>

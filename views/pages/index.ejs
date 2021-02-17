@@ -2,50 +2,43 @@
 <html lang="en">
 
 <head>
-  <title> Niche Thrift - Collections of Designer & Rare Clothing </title>
-  <link rel="icon" href="favicon.ico?v=1.5">
-
-  <meta name="viewport" content="initial-scale=1">
-  <link href="/styles/base.css" rel="stylesheet">
-  <link href="/styles/flex.css" rel="stylesheet">
-  <link href="/styles/sizing.css" rel="stylesheet">
+  <%- include('../partials/head.ejs'); %>
+  <link href="/styles/indie/showroom.css" rel="stylesheet">
 </head>
 
 <body>
   <div class="page-wrapper">
 
-    <%- include('../partials/header.ejs'); %>
+    <%- include('../partials/nav.ejs'); %>
 
-    <div class="showroom">
+    <div class="main-block">
       <div class="row row-space">
         <% show_items.forEach(function(item){ %>
-            <div class="show_item m-t-30">
-              <a href="/item/<%- item._id %>">
-                <div class="row">
-                  <img class="showroom-img" src="/show-item/<%- item.images[0] %>" alt="ohlord" style="height:230px;width:230px;">
-                </div>
-                <div class="row">
-                  <div class="col-1 p-t-10">
-                    <h2><%- item.brand %></h2>
-                    <p><%- item.description %></p>
-                    <div class="price-line">
-                      <%if (item.discount_price==null){ %>
-                      <p class="price">$<%- item.price %></p>
-                      <% }else{ %>
-                      <p class="price red-line">$<%- item.price %></p>
-                      <p class="discount-price"> $<%- item.discount_price %></p>
-                      <% } %>
-                    </div>
-                  </div>
-                </div>
-              </a>
+        <div class="show_item">
+          <a href="/item/<%- item._id %>">
+            <div class="row">
+              <img class="showroom-img" src="/show-item/<%- item.images[0] %>" alt="ohlord">
             </div>
+            <div class="row">
+              <div class="col-1 p-t-10">
+                <h2><%- item.brand %></h2>
+                <p><%- item.description %></p>
+                <div class="price-line">
+                  <%if (item.discount_price==null){ %>
+                  <p class="price">$<%- item.price %></p>
+                  <% }else{ %>
+                  <p class="price red-line">$<%- item.price %></p>
+                  <p class="discount-price"> $<%- item.discount_price %></p>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
         <% }); %>
       </div>
     </div>
-
     <%- include('../partials/footer.ejs'); %>
-
   </div>
 </body>
 

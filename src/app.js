@@ -13,7 +13,7 @@ mongoose // MongoDB database connection which contains REST API
 		const app = express()
 
     // Set ejs view-engine
-    app.set('views', 'rag-site/views')
+    app.set('views', 'niche-site/views')
     app.set('view engine', 'ejs')
 
 		app.use(cookieParser());
@@ -42,6 +42,7 @@ mongoose // MongoDB database connection which contains REST API
 		- Expand category system to have multiple categories
 		- Item view does not show multiple images
 		- Page Titles
+		- Add function to make Animation happen once a day.
 
 			--- CART ----
 		- Order cart item by date added

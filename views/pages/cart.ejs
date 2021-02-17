@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/styles/base.css" rel="stylesheet">
-  <link href="/styles/cart.css" rel="stylesheet">
-  <link href="/styles/flex.css" rel="stylesheet">
-  <link href="/styles/sizing.css" rel="stylesheet">
+  <%- include('../partials/head.ejs'); %>
+  <link href="/styles/indie/cart.css" rel="stylesheet">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
   <script src="https://js.stripe.com/v3/"></script>
@@ -15,7 +12,9 @@
 <body>
   <div class="page-wrapper">
 
-    <%- include('../partials/header.ejs'); %>
+    <%- include('../partials/nav.ejs'); %>
+
+    <div class="main-block">
 
     <div class="pre-cart">
       <p>cart</p>
@@ -63,6 +62,7 @@
     <div class="post-cart">
       <button type="button" id="checkout-button">checkout</button>
     </div>
+  </div>
 
     <%- include('../partials/footer.ejs'); %>
 

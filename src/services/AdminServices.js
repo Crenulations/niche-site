@@ -34,6 +34,12 @@ exports.addImageToItem = async (id, img_url) => {
   item.save()
 }
 
+exports.deleteImage = async (id, num) => {
+  var item = await SiteServices.getInventoryByID(id)
+  item.images.splice(num,1)
+  item.save()
+}
+
 exports.updateInventoryItem = async (id, req) => {
   var item = await SiteServices.getInventoryByID(id)
 
