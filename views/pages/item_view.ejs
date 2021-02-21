@@ -37,12 +37,16 @@
             <% }) %>
           </div>
           <div class="size-section p-t-15">
+            <p> Size </p>
+            <p> <%- item.single_size %> </p>
+            <!--
             <p> Select size </p>
             <div class = "size-btn-container">
               <button class="size-btn">S</button>
               <button class="size-btn">M</button>
               <button class="size-btn">L</button>
             </div>
+            -->
           </div>
           <div class="add-cart-section p-t-15">
             <button class="fake-href add_cart_button" onclick="addCart('<%- item._id %>')" type="submit">add to cart</button>
@@ -69,15 +73,15 @@
         function addCart(id) {
 
           var selected = document.getElementsByClassName('selected')[0]
-          if(selected == null){
-            alert("select a size")
+          //if(selected == null){
+            //alert("select a size")
 
-          }else{
+          //}else{
             document.getElementById('item_id').value = id;
-            document.getElementById('item_size').value = selected.innerHTML;
+            //document.getElementById('item_size').value = selected.innerHTML;
 
             document.getElementById('submit_form').submit();
-          }
+          //}
         }
       </script>
   </div>

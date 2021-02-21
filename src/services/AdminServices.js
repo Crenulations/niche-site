@@ -46,6 +46,7 @@ exports.updateInventoryItem = async (id, req) => {
   item.brand = req.body.brand
   item.description = req.body.description
   item.price = req.body.price
+  item.single_size = req.body.single_size
   item.discount_price = req.body.discount_price
   item.category = req.body.category
   // Load the minor Descriptions

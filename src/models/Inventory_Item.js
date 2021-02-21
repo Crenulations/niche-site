@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const schema = mongoose.Schema({
 	brand: String,
   description: String,
+	single_size: String,
 	price: Number,
 	discount_price: Number,
 	sold_out: Boolean,
