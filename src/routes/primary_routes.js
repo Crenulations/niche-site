@@ -80,7 +80,7 @@ router.get('/$', async (req, res) => { // INDEX PAGE
   var inventory = await SiteServices.getFullInventory()
   res.render('pages/index.ejs', {
     show_items: inventory,
-    animation: false,
+    animation: true,
   })
 })
 

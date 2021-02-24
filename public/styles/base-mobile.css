@@ -1,22 +1,9 @@
 
 @media only screen and (max-width: 570px) {
-  .item_image img {
-    width: 100vw;
-  }
 
-  .showroom {
-    padding: 0 0vw;
-    width: auto;
-    margin: auto;
-  }
-
-  .showroom-img {
-    object-fit: cover;
-    min-width: 80vw;
-    min-height: 80vw;
-  }
-
-  .showroom .row {
-    justify-content: space-around;
+  .main-block {
+    flex-basis: auto;
+    width: 100%;
+    min-height: 50vh;
   }
 }
