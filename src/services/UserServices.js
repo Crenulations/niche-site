@@ -1,4 +1,3 @@
-const stripe = require('stripe')('sk_test_51I716xDScnxQKL28PKQkaf9uIYAWhdry4CoSrJpMbhdVZhT18iyyiDDDOOeJtKvO3BAAGagjhrCbyW262u05L1fR00tEQPnxua');
 const mongoose = require("mongoose")
 
 const Inventory_Item = require("../models/Inventory_Item")
@@ -65,35 +64,10 @@ exports.addItemToCart = async (id, item_id, item_size) => {
 }
 
 exports.removeItemFromCart = async (id, cart_num) =>{
+  console.log("YOOOO")
   let session = await UserSession.findById(id).exec()
   session.cart.splice(cart_num, 1)
   session.save()
-}
-
-const DOMAIN = "http://niche-thrift.com"
-exports.generateStripeCheckout = async (id) => {
-  const userSession = await UserSession.findById(id).exec()
-  const cart_pack = await exports.getUserCart(id)
-  const total = cart_pack.total*100
-  const stripeSession = await stripe.checkout.sessions.create({
-   payment_method_types: ['card'],
-   line_items: [
-     {
-       price_data: {
-         currency: 'usd',
-         product_data: {
-           name: 'Total',
-         },
-         unit_amount: total,
-       },
-       quantity: 1,
-     },
-   ],
-   mode: 'payment',
-   success_url: `${DOMAIN}/checkout-success`,
-   cancel_url: `${DOMAIN}/cart`,
- })
- return stripeSession
 }
 
 exports.addEmail = async (id, email) => { // This ideally should scrub input for security

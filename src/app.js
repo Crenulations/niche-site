@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const api_routes = require("./routes/api_routes.js")
 const primary_routes = require("./routes/primary_routes.js")
 const admin_routes = require("./routes/admin_routes.js")
+const stripe_routes = require("./routes/stripe_routes.js")
 const cookieParser = require("cookie-parser")
 const bodyParser = require('body-parser')
 
@@ -23,6 +24,7 @@ mongoose // MongoDB database connection which contains REST API
     // Implement routes
 		app.use("/admin", admin_routes)
 		app.use("/api", api_routes)
+		app.use("/stripe", stripe_routes)
 		app.use("/", primary_routes)
 
 		app.listen(80, () => {

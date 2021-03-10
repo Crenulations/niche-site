@@ -10,11 +10,6 @@ const {validateUserSession: validateUserSession} = require("../middlewares/Sessi
 
 router.use(validateUserSession)
 
-router.post('/create-checkout-session', async (req, res) => {
-  const session = await UserServices.generateStripeCheckout(req.session._id)
-  res.json({ id: session.id })
-})
-
 router.post('/add_cart', async (req, res) => {
   await UserServices.addItemToCart(req.session._id, req.body.item_id, req.body.item_size)
   res.redirect('/cart');

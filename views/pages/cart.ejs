@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="post-cart">
-      <button type="button" id="checkout-button">checkout</button>
+      <button type="button" id="checkout_button">checkout</button>
     </div>
   </div>
 
@@ -72,9 +72,9 @@
 <script type="text/javascript">
     // Create an instance of the Stripe object with your publishable API key
     var stripe = Stripe("pk_test_51I716xDScnxQKL28YFeKFLH340dl4hLDML2UGowAbvlRLp7ozIt64qh7MfdUkuOrwjxSwNt9UpVz7zpVNbURmou6006sydC96x");
-    var checkoutButton = document.getElementById("checkout-button");
+    var checkoutButton = document.getElementById("checkout_button");
     checkoutButton.addEventListener("click", function () {
-      fetch("/api/create-checkout-session", {
+      fetch("/stripe/create-checkout-session", {
         method: "POST",
       })
         .then(function (response) {
