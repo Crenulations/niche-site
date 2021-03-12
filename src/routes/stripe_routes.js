@@ -2,24 +2,22 @@ const express = require("express")
 const router = express.Router()
 const bodyParser = require('body-parser')
 const StripeServices = require("../services/StripeServices")
-
-// Import Middleware
-const {validateUserSession: validateUserSession} = require("../middlewares/SessionMiddleware")
-
-router.use(validateUserSession)
+const SiteServices = require("../services/StripeServices")
 
 
-router.post('/create-checkout-session', async (req, res) => {
-  const session = await StripeServices.generateStripeCheckout(req.session._id)
-  res.json({ id: session.id })
-})
+router.post('/webhook', bodyParser.raw({type: 'application/json'}), async (req, res) => {
+  console.log("STRIPE WEBHOOK ACTIVATED")
 
-router.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
-  const payload = request.body;
+  let event = StripeServices.verifyOrder(req,res)
+  res.status(200).send()
 
-  console.log("Got payload: " + payload);
+  // Handle the checkout.session.completed event
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
 
-  response.status(200);
+    // Fulfill the purchase...
+    await StripeServices.fulfillOrder(event)
+  }
 });
 
 module.exports = router

@@ -41,9 +41,12 @@
                   <div class="product-thumbnail">
                     <div class="product-img-head">
                       <div class="product-img">
-                        <img src="/show-item/<%- item.images[0] %>" alt="" class="img-fluid"></div>
+                        <img src="/show-item/<%- item.images[0] %>" alt="" class="img-fluid">
+                      </div>
+                      <% if(item.sold_out) { %>
                       <div class="ribbons bg-danger"></div>
-                      <div class="ribbons-text">Sale</div>
+                      <div class="ribbons-text">Sold</div>
+                      <% } %>
                     </div>
                     <div class="product-content">
                       <div class="product-content-head">
@@ -52,7 +55,7 @@
 
                         <div class="product-price">$<%- item.price %></div>
                       </div>
-                      <div class="product-btn">
+                      <div class="product-btn" style="display: flex">
                         <a href="/admin/inventory/edit_item/<%- item._id %>" class="btn btn-primary">Edit</a>
                         <form class="delete-form" action="/admin/delete_item/<%- item._id %>" method="post">
                           <button type="submit" class="btn btn-outline-light">Delete</a>

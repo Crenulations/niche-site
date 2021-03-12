@@ -4,8 +4,6 @@ const api_routes = require("./routes/api_routes.js")
 const primary_routes = require("./routes/primary_routes.js")
 const admin_routes = require("./routes/admin_routes.js")
 const stripe_routes = require("./routes/stripe_routes.js")
-const cookieParser = require("cookie-parser")
-const bodyParser = require('body-parser')
 
 mongoose // MongoDB database connection which contains REST API
 	.connect("mongodb://localhost:27017/PrimaryData", { useNewUrlParser: true, useUnifiedTopology: true })
@@ -16,10 +14,6 @@ mongoose // MongoDB database connection which contains REST API
     // Set ejs view-engine
     app.set('views', 'niche-site/views')
     app.set('view engine', 'ejs')
-
-		app.use(cookieParser());
-		app.use(bodyParser.json())
-		app.use(bodyParser.urlencoded({ extended: true }))
 
     // Implement routes
 		app.use("/admin", admin_routes)
@@ -35,7 +29,9 @@ mongoose // MongoDB database connection which contains REST API
 /* ========== TO-DO ==============
 
 			--- MOST IMPORTANT ---
-		- MAJOR GLITCH: desktop safari messes up animation
+		- Activate stripe shipping address
+		-	No cart duplicates
+		- desktop safari messes up animation
 		- Database auth file
 		- Admin auth
 		- connecting to the success page should clear the cart

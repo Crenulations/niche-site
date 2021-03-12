@@ -3,15 +3,22 @@ const router = express.Router()
 const mongoose = require("mongoose")
 const path = require("path")
 const favicon = require('serve-favicon')
+const cookieParser = require("cookie-parser")
+const bodyParser = require('body-parser')
 
 const SiteServices = require("../services/SiteServices")
 const UserServices = require("../services/UserServices")
+const StripeServices = require("../services/StripeServices")
 
 
 // ======= MIDDLEWARE =======
 
 // Import Middleware
 const {validateUserSession: validateUserSession} = require("../middlewares/SessionMiddleware")
+
+router.use(cookieParser());
+router.use(bodyParser.json())
+router.use(bodyParser.urlencoded({ extended: true }))
 
 // Load images from external upload folder
 router.get('/show-item/:id', (req, res) => {
@@ -77,7 +84,7 @@ router.get('/checkout-success', async (req, res) => {
 })
 
 router.get('/$', async (req, res) => { // INDEX PAGE
-  var inventory = await SiteServices.getFullInventory()
+  var inventory = await SiteServices.getAvailableInventory()
   res.render('pages/index.ejs', {
     show_items: inventory,
     animation: true,

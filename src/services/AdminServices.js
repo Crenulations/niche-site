@@ -1,8 +1,14 @@
 const Inventory_Item = require("../models/Inventory_Item")
 const UserSession = require("../models/UserSession")
+const Order = require("../models/Order")
 
 const SiteServices = require("./SiteServices")
+const StripeServices = require("./StripeServices")
 
+
+exports.getAllOrders = async () => {
+  return await Order.find().exec()
+}
 
 exports.getAllUserSessions = async () => {
   return await UserSession.find().exec()

@@ -74,7 +74,7 @@
     var stripe = Stripe("pk_test_51I716xDScnxQKL28YFeKFLH340dl4hLDML2UGowAbvlRLp7ozIt64qh7MfdUkuOrwjxSwNt9UpVz7zpVNbURmou6006sydC96x");
     var checkoutButton = document.getElementById("checkout_button");
     checkoutButton.addEventListener("click", function () {
-      fetch("/stripe/create-checkout-session", {
+      fetch("/api/create-checkout-session", {
         method: "POST",
       })
         .then(function (response) {

@@ -54,6 +54,41 @@ exports.getUserCart = async (id) => { // Returns both cart and total together as
   return {cart: cart, total: total}
 }
 
+exports.getOrderInfo = async (id) => {
+  const user = await UserSession.findById(id).exec()
+
+  var cart = []
+  var total = 0
+
+  for (i = 0; i < user.cart.length; i++) {
+
+    let entry = user.cart[i]
+    let item = await SiteServices.getInventoryByID(entry.item)
+
+    //This checks if item has been deleted but it should also check if is sold out.
+    if (item == null) {
+      user.cart.splice(i, 1)
+      await user.save();
+    } else {
+      if (item.discount_price != null) {
+        total += item.discount_price
+      } else {
+        total += item.price
+      }
+      cart.push(item._id)
+    }
+  }
+  total = total.toFixed(2)
+  console.log(total)
+  return {cart: cart, total: total}
+}
+
+exports.wipeUserCart = async (id) => {
+  let user = await UserSession.findById(id).exec()
+  user.cart = []
+  user.save()
+}
+
 exports.addItemToCart = async (id, item_id, item_size) => {
   let session = await UserSession.findById(id).exec()
   session.cart.push({

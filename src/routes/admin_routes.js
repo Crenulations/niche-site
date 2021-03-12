@@ -1,6 +1,8 @@
 const express = require("express")
 const multer = require("multer")
 const router = express.Router()
+const cookieParser = require("cookie-parser")
+const bodyParser = require('body-parser')
 
 const SiteServices = require("../services/SiteServices")
 const UserServices = require("../services/UserServices")
@@ -8,6 +10,10 @@ const AdminServices = require("../services/AdminServices")
 
 // Import Middleware
 const {multerUpload: multerUpload} = require("../middlewares/AdminMiddleware")
+
+router.use(cookieParser());
+router.use(bodyParser.json())
+router.use(bodyParser.urlencoded({ extended: true }))
 
 router.use(express.json()); // to support JSON-encoded bodies                           these are for multer
 router.use(express.urlencoded({ extended: true })); // to support URL-encoded bodies         img uploads
@@ -42,6 +48,14 @@ router.get('/sessions/main', async (req, res) => {
   var sessions = await AdminServices.getAllUserSessions()
   res.render('pages/admin/sessions/sessions_main.ejs', {
     sessions: sessions,
+  })
+})
+
+// VIEW ALL ORDERS
+router.get('/orders/main', async (req, res) => {
+  var orders = await AdminServices.getAllOrders()
+  res.render('pages/admin/orders/orders.ejs', {
+    orders: orders,
   })
 })
 

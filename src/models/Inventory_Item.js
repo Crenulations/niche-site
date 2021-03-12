@@ -4,8 +4,11 @@ const schema = mongoose.Schema({
 	brand: String,
   description: String,
 	single_size: String,
+
 	price: Number,
 	discount_price: Number,
+
+	active: Boolean,
 	sold_out: Boolean,
 	category: String,
 	minor_descriptions: [{type: String}],
