@@ -29,18 +29,19 @@ mongoose // MongoDB database connection which contains REST API
 /* ========== TO-DO ==============
 
 			--- MOST IMPORTANT ---
+		- HTTPS 
 		- Activate stripe shipping address
 		-	No cart duplicates
-		- Add handling for rejected orders on Stripe webhooks
+		- Add handling for rejected orders on Stripe webhooks (send an email)
 		- desktop safari messes up animation
-		- Database auth file
-		- Admin auth
+		- Database authentication
+		- Load stripe secrets, admin passwords, and database auth from seperate file not kept on github
 
 			--- MAIN SITE ----
 		- Expand category system to have multiple categories
 		- Item view does not show multiple images
 		- Page Titles
-		- Add function to make Animation happen once a day.
+		- Add function to make Animation only happen once a day.
 
 			--- CART ----
 		- Order cart item by date added
