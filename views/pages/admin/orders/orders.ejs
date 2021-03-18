@@ -53,7 +53,12 @@
                                           <% orders.forEach(function(order){ %>
                                             <tr>
                                                 <td><%- order.user_id %></td>
-                                                <td><%- order.items %></td>
+                                                <td>
+                                                  <% order.items.forEach(function(item){ %>
+                                                    <%- item %>
+                                                    <img src="/show-item/<%- item %>" alt="" class="img-fluid">
+                                                  <% }) %>
+                                                </td>
                                                 <td><%- order.total %></td>
                                                 <td><%- order.payed %></td>
                                                 <td><%- order.shipped %></td>

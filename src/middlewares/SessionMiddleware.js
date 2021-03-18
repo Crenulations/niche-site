@@ -8,14 +8,13 @@ const UserServices = require("../services/UserServices")
 exports.validateUserSession = async (req, res, next) => {
   var session = await UserServices.findUserById(req.cookies.user_id)
 
-  console.log("VALIDATING USER CONNECT: "+req.url+"  ================")
-  console.log("COOKIE:  "+req.cookies.user_id)
+  //console.log("VALIDATING USER CONNECT: "+req.url+"  ================")
+  //console.log("COOKIE:  "+req.cookies.user_id)
 
 
 
   // If no cookie
   if(!session){
-    console.log("NO SESSION")
     // Check for dead sessions
     session = await UserServices.checkDeadSessions(req.connection.remoteAddress)
     // If there is no dead sessions create new session
@@ -25,7 +24,6 @@ exports.validateUserSession = async (req, res, next) => {
 
   // If cookie
   }else{
-    console.log("SESSION FOUND")
     // Remove new flag on second connection when cookie is confirmed to have been received
     if (session.new == true) {
       session.new = false

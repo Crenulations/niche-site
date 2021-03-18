@@ -100,9 +100,14 @@
                   <% }) %>
                   <input class="minor_desc form-control" type="text" name="minor_description_<%- item.minor_descriptions.length %>">
                 </div>
+                <div class="form-group">
+                <label class="col-form-label">Sold Out</label>
+                <input class="form-control" type="radio" name="sold_out" value="<%- item.sold_out %>">
+              </div>
                   <div class="form-group">
                   <button class="btn btn--radius-2 btn--blue" type="submit">SAVE</button>
                 </div>
+
                 </form>
                 <form class="delete-form" action="/admin/delete_item/<%- item._id %>" method="post">
                   <button type="submit" class="btn btn-outline-light">Delete</a>

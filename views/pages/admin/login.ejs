@@ -1,29 +1,59 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" href="/libs/admin_assets/libs/css/style.css">
 
-  <script src="/libs/jquery/jquery.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login</title>
+
+  <link rel="stylesheet" href="/libs/admin_assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link href="/libs/admin_assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="/libs/admin_assets/libs/css/style.css">
+  <link rel="stylesheet" href="/libs/admin_assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="page-wrapper">
-    <div class="card">
 
-      <div class="row row-space">
-        <div class="col-1">
-          <h1> LOGIN </h1>
-        </div>
+
+
+  <div class="splash-container">
+    <div class="card ">
+      <% if(bad_login == true) { %>
+      <div class="card-header text-center">
+        <span class="splash-description"> Incorrect username or password. </span>
       </div>
-
-      <form class="login-form" action="/admin/login" method="post">
-        <!--<input class="login-inpt" placeholder="username" type="text" name="user">-->
-        <input class="login-inpt" placeholder="password" type="text" name="password">
-        <button type="submit">enter</button>
-      </form>
+      <% } %>
+      <div class="card-body">
+        <form class="main-form" action="/admin/login" method="post">
+          <div class="form-group">
+            <input class="form-control form-control-lg" id="username" name="username" type="text" placeholder="Username" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <input class="form-control form-control-lg" id="password" name="password" type="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+        </form>
+      </div>
     </div>
   </div>
+
+  <script src="/libs/admin_assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
 </body>
 
 </html>

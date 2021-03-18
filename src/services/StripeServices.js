@@ -24,7 +24,7 @@ exports.generateStripeCheckout = async (order) => {
      },
    ],
    mode: 'payment',
-   success_url: `${DOMAIN}/checkout_success`,
+   success_url: `${DOMAIN}/checkout-success`,
    cancel_url: `${DOMAIN}/cart`,
   /* shipping_address_collection: {
      allowed_countries: ['US', 'CA'],

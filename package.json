@@ -5,6 +5,7 @@
   "main": "src/app.js",
   "dependencies": {
     "argon2": "^0.27.1",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.5",
@@ -18,7 +19,6 @@
     "stripe": "^8.132.0",
     "uuid": "^8.3.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

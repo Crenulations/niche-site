@@ -31,10 +31,10 @@ mongoose // MongoDB database connection which contains REST API
 			--- MOST IMPORTANT ---
 		- Activate stripe shipping address
 		-	No cart duplicates
+		- Add handling for rejected orders on Stripe webhooks
 		- desktop safari messes up animation
 		- Database auth file
 		- Admin auth
-		- connecting to the success page should clear the cart
 
 			--- MAIN SITE ----
 		- Expand category system to have multiple categories
