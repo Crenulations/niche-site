@@ -33,6 +33,7 @@ router.post('/add_email', async (req, res) => {
 })
 
 router.post('/create-checkout-session', async (req, res) => {
+  console.log("===%^& CHECKOUT %^&===")
   const order = await SiteServices.createOrder(req.session._id)
   const session = await StripeServices.generateStripeCheckout(order)
   res.json({ id: session.id })

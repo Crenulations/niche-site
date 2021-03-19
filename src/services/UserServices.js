@@ -99,7 +99,6 @@ exports.addItemToCart = async (id, item_id, item_size) => {
 }
 
 exports.removeItemFromCart = async (id, cart_num) =>{
-  console.log("YOOOO")
   let session = await UserSession.findById(id).exec()
   session.cart.splice(cart_num, 1)
   session.save()
