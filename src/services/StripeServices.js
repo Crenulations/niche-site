@@ -8,6 +8,7 @@ const endpointSecret = "whsec_vWYCdYX3ceERF8j1sq83i3YctKZPpvw8"
 const DOMAIN = "http://niche-thrift.com"
 
 exports.generateStripeCheckout = async (order) => {
+  console.log("Generating Stripe Checkout  $: "+order.total)
   const stripeSession = await stripe.checkout.sessions.create({
    payment_method_types: ['card'],
    metadata: {'order_id': ''+order._id},
@@ -26,9 +27,9 @@ exports.generateStripeCheckout = async (order) => {
    mode: 'payment',
    success_url: `${DOMAIN}/checkout-success`,
    cancel_url: `${DOMAIN}/cart`,
-  /* shipping_address_collection: {
+   shipping_address_collection: {
      allowed_countries: ['US', 'CA'],
-   }*/
+   }
  })
  return stripeSession
 }
