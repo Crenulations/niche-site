@@ -60,6 +60,18 @@ exports.updateInventoryItem = async (id, req) => {
   item.single_size = req.body.single_size
   item.discount_price = req.body.discount_price
   item.category = req.body.category
+
+  // Load checkboxes
+  if(req.body.sold_out === "on")
+    item.sold_out = true
+  else
+    item.sold_out = false
+
+  if(req.body.preorder === "on")
+    item.preorder = true
+  else
+    item.preorder = false
+
   // Load the minor Descriptions
   var minor_descs = []
   for (i = 0; i > -1; i++) {

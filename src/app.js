@@ -4,12 +4,18 @@ const api_routes = require("./routes/api_routes.js")
 const primary_routes = require("./routes/primary_routes.js")
 const admin_routes = require("./routes/admin_routes.js")
 const stripe_routes = require("./routes/stripe_routes.js")
+const fs = require('fs');
+
 
 mongoose // MongoDB database connection which contains REST API
 	.connect("mongodb://localhost:27017/PrimaryData", { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
 
-		const app = express()
+		var privateKey = fs.readFileSync('../../nychecollections.com.key');
+		var certificate = fs.readFileSync('../../nychecollections.com.crt');
+		var credentials = {key: privateKey, cert: certificate};
+
+		var app = express.createServer(credentials);
 
     // Set ejs view-engine
     app.set('views', 'niche-site/views')
@@ -29,7 +35,7 @@ mongoose // MongoDB database connection which contains REST API
 /* ========== TO-DO ==============
 
 			--- MOST IMPORTANT ---
-		- HTTPS 
+		- HTTPS
 		- Activate stripe shipping address
 		-	No cart duplicates
 		- Add handling for rejected orders on Stripe webhooks (send an email)

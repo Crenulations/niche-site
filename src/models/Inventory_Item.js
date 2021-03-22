@@ -8,8 +8,8 @@ const schema = mongoose.Schema({
 	price: Number,
 	discount_price: Number,
 
-	active: Boolean,
 	sold_out: Boolean,
+	preorder: Boolean,
 	category: String,
 	minor_descriptions: [{type: String}],
 	images: [{type:String}],
