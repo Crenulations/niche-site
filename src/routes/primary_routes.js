@@ -83,6 +83,11 @@ router.get('/checkout-success', async (req, res) => {
   res.render('pages/util/checkout-success.ejs')
 })
 
+router.get('/.well-known/pki-validation/*', async (req, res) => { // INDEX PAGE
+  res.sendFile('/root/DDF169BE3DFEA31BBB98A3FF3501FD2F.txt')
+})
+
+
 router.get('/$', async (req, res) => { // INDEX PAGE
   var inventory = await SiteServices.getAvailableInventory()
   res.render('pages/index.ejs', {
