@@ -50,7 +50,8 @@ mongoose // MongoDB database connection which contains REST API
 /* ========== TO-DO ==============
 
 			--- MOST IMPORTANT ---
-		- HTTPS
+		- Brand and category still show sold out items
+				- Items should be checked for availability before adding to cart and before checkout
 		- Activate stripe shipping address
 		-	No cart duplicates
 		- Add handling for rejected orders on Stripe webhooks (send an email)

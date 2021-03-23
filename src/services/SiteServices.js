@@ -20,13 +20,13 @@ exports.getInventoryByID = async (id) => {
   return await Inventory_Item.findById(id).exec()
 }
 exports.getInventoryBySale = async () => {
-  return await Inventory_Item.find({sale: { $ne: ""}}).exec()
+  return await Inventory_Item.find({sale: { $ne: "discount"}}).exec()
 }
 exports.getInventoryByBrand = async (brand) => {
-  return await Inventory_Item.find({brand: brand}).exec()
+  return await Inventory_Item.find({brand: brand, sold_out: false}).exec()
 }
 exports.getInventoryByCategory = async (category) => {
-  return await Inventory_Item.find({category: category}).exec()
+  return await Inventory_Item.find({category: category, sold_out: false}).exec()
 }
 exports.selloutInventory = async (id) => {
   let item = await exports.getInventoryByID(id)

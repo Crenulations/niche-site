@@ -5,7 +5,7 @@ const Order = require("../models/Order")
 
 const stripe = require('stripe')('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');
 const endpointSecret = "whsec_vWYCdYX3ceERF8j1sq83i3YctKZPpvw8"
-const DOMAIN = "http://niche-thrift.com"
+const DOMAIN = "https://nychecollections.com"
 
 exports.generateStripeCheckout = async (order) => {
   console.log("Generating Stripe Checkout  $: "+order.total)
