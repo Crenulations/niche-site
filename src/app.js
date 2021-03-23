@@ -12,11 +12,14 @@ const fs = require('fs');
 mongoose // MongoDB database connection which contains REST API
 	.connect("mongodb://localhost:27017/PrimaryData", { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
-		console.log('Path of file in parent dir:', require('path').resolve(__dirname, '../app.js'));
-		var privateKey = fs.readFileSync('./key.pem','utf8');
-		var certificate = fs.readFileSync('./cert.pem','utf8');
-		var credentials = {key: privateKey, cert: certificate};
 
+		const args = process.argv.slice(2)
+		if (args[0] === 'live'){
+			console.log('Path of file in parent dir:', require('path').resolve(__dirname, '../app.js'));
+			var privateKey = fs.readFileSync('./key.pem','utf8');
+			var certificate = fs.readFileSync('./cert.pem','utf8');
+			var credentials = {key: privateKey, cert: certificate};
+		}
 		var app = express();
 
 
@@ -32,14 +35,16 @@ mongoose // MongoDB database connection which contains REST API
 		app.use("/", primary_routes)
 
 		var httpServer = http.createServer(app);
-		var httpsServer = https.createServer(credentials, app);
-
 		httpServer.listen(80);
-		httpsServer.listen(443);
 
-		
+		if (args[0] === 'live'){
+			var httpsServer = https.createServer(credentials, app);
+			httpsServer.listen(443);
+		}
+
+
       console.log("Succesful connection to port 80")
-		
+
 	})
 
 /* ========== TO-DO ==============

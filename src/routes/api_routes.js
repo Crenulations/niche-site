@@ -23,7 +23,7 @@ router.post('/add_cart', async (req, res) => {
 })
 
 router.post('/remove_cart/:cart_num', async (req, res) => {
-  await UserServices.removeItemFromCart(req.cookies.user_id, req.params.cart_num)
+  await UserServices.removeItemFromCart(req.session._id, req.params.cart_num)
   res.redirect('back')
 })
 
