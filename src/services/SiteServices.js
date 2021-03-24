@@ -20,7 +20,7 @@ exports.getInventoryByID = async (id) => {
   return await Inventory_Item.findById(id).exec()
 }
 exports.getInventoryBySale = async () => {
-  return await Inventory_Item.find({sale: { $ne: "discount"}}).exec()
+  return await Inventory_Item.find({sale: { $ne: "discount"}, sold_out: false}).exec()
 }
 exports.getInventoryByBrand = async (brand) => {
   return await Inventory_Item.find({brand: brand, sold_out: false}).exec()
@@ -45,6 +45,8 @@ exports.createOrder = async (id) => {
   	total: total,
   	payed: false,
   	shipped: false,
+
+    date_created: new Date(),
   })
   await order.save()
   return order

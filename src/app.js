@@ -13,6 +13,7 @@ mongoose // MongoDB database connection which contains REST API
 	.connect("mongodb://localhost:27017/PrimaryData", { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
 
+		// Load HTTPS cert if in live mode
 		const args = process.argv.slice(2)
 		if (args[0] === 'live'){
 			console.log('Path of file in parent dir:', require('path').resolve(__dirname, '../app.js'));
@@ -20,9 +21,8 @@ mongoose // MongoDB database connection which contains REST API
 			var certificate = fs.readFileSync('./cert.pem','utf8');
 			var credentials = {key: privateKey, cert: certificate};
 		}
+
 		var app = express();
-
-
 
     // Set ejs view-engine
     app.set('views', 'niche-site/views')
@@ -34,24 +34,26 @@ mongoose // MongoDB database connection which contains REST API
 		app.use("/stripe", stripe_routes)
 		app.use("/", primary_routes)
 
-		var httpServer = http.createServer(app);
-		httpServer.listen(80);
-
+		// Create HTTP or HTTPS connection
 		if (args[0] === 'live'){
 			var httpsServer = https.createServer(credentials, app);
 			httpsServer.listen(443);
+			console.log("Succesful HTTPS connection on port 443")
+			console.log("LIVE MODE")
+		} else {
+			var httpServer = http.createServer(app);
+			httpServer.listen(80);
+			console.log("Succesful HTTP connection on port 80")
+			console.log("TEST MODE")
 		}
-
-
-      console.log("Succesful connection to port 80")
 
 	})
 
 /* ========== TO-DO ==============
 
 			--- MOST IMPORTANT ---
-		- Brand and category still show sold out items
-				- Items should be checked for availability before adding to cart and before checkout
+		- Error with Stripe webhooks
+		- Items should be checked for availability before adding to cart and before checkout
 		- Activate stripe shipping address
 		-	No cart duplicates
 		- Add handling for rejected orders on Stripe webhooks (send an email)

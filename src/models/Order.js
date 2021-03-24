@@ -7,6 +7,9 @@ const schema = mongoose.Schema({
 	total: Number,
 	payed: Boolean,
 	shipped: Boolean,
+
+	date_created: Date,
+	date_shipped: Date,
 },{ collection : 'Orders' })
 
 module.exports = mongoose.model("Order", schema)
